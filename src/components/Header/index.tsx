@@ -1,6 +1,6 @@
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import Link from "next/link";
+
 
 
 export default function Header() {
@@ -9,9 +9,9 @@ export default function Header() {
   return (
     <header className="flex justify-around my-2 tablet:justify-center items-center gap-11 tablet:my-10 tablet:w-full">
       <div className="flex gap-5 items-center">
-        {/* Mobile Menu */}
-        <FaBars className="text-lg block tablet:hidden cursor-pointer" />
        
+        <FaBars className="text-lg block tablet:hidden cursor-pointer" />
+        
         
       </div>
 

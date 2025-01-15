@@ -1,12 +1,5 @@
-import { Roboto } from "next/font/google";
 import "./globals.css";
-
-const roboto = Roboto({
-  subsets:["latin"], //subconjunto para idiomas soportados
-  weight:["400","700"], //normal and bold
-  style:["normal","italic"], 
-  display:"swap", //carga la fuente de manera que no bloquee el renderizado
-})
+import { satoshi, oswald } from "./fonts/fonts";
 
 export default function RootLayout({
   children,
@@ -14,12 +7,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${roboto.className}`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${satoshi.variable} ${oswald.variable}`}> 
+      <body className="font-body">{children}</body>
     </html>
   );
 }

@@ -8,9 +8,9 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily:{
+        body:['var(--body-font)','sans-serif'],
+        heading:['var(--heading-font)','sans-serif']
       },
       screens: {
         'tablet': '768px',  
