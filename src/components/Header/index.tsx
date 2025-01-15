@@ -1,18 +1,13 @@
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
-import { IconContext } from "react-icons";
-
-
+import Link from "next/link";
 
 export default function Header() {
-
-
   return (
     <header className="flex justify-around my-2 tablet:justify-center items-center gap-11 tablet:my-10 tablet:w-full">
+      {/* LOGO */}
       <div className="flex gap-5 items-center">
-       
         <FaBars className="text-lg block tablet:hidden cursor-pointer" />
-        
-        
+        <Link href={"/"} className="text-xl tablet:text-3xl font-bold font-heading cursor-pointer">SHOP.CO</Link>
       </div>
 
       {/* MENU */}
@@ -42,10 +37,10 @@ export default function Header() {
       </div>
 
       {/* SEARCH PRODUCTS */}
-      <div className="hidden tablet:flex items-center bg-neutral200 gap-3 px-3 py-4 rounded-[62px] w-[550px]">
+      <div className="hidden tablet:flex items-center bg-neutral-200 gap-3 px-3 py-4 rounded-[62px] w-[550px]">
         <FaSearch className="text-gray-600 cursor-pointer text-xl" />
         <input
-          className="border-none bg-neutral200 outline-none"
+          className="border-none bg-neutral-200 outline-none"
           type="text"
           placeholder="Search for products..."
         />
@@ -53,21 +48,14 @@ export default function Header() {
 
       {/* ICONOS */}
       <div className="flex justify-center items-center gap-3 tablet:gap-5 ">
-        <IconContext.Provider value={{ className: "cursor-pointer" }}>
-          <FaSearch alt={"search"} className="block tablet:hidden " />
-          <div className="relative">
-            <FaShoppingCart
-              alt={"carrito"}
-              className="text-lg tablet:text-xl"
-            />
-           
-              <span className="absolute bottom-4 left-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center items-center">
-              
-              </span>
-            
-          </div>
-          <FaUser alt={"usuario"} className="text-lg tablet:text-xl" />
-        </IconContext.Provider>
+        <FaSearch className="block tablet:hidden cursor-pointer" />
+        <div className="relative">
+          <FaShoppingCart className="text-lg tablet:text-xl cursor-pointer" />
+          <span className="absolute bottom-4 left-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center items-center">
+            3
+          </span>
+        </div>
+        <FaUser className="text-lg tablet:text-xl cursor-pointer" />
       </div>
     </header>
   );
