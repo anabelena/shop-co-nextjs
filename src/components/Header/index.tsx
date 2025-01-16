@@ -7,7 +7,7 @@ export default function Header() {
       {/* LOGO */}
       <div className="flex gap-5 items-center">
         <FaBars className="text-lg block tablet:hidden cursor-pointer" />
-        <Link href={"/"} className="text-xl tablet:text-3xl font-bold font-heading cursor-pointer">SHOP.CO</Link>
+        <Link href={"/"} className="text-xl tablet:text-3xl font-bold font-heading cursor-pointer"> SHOP.CO </Link>
       </div>
 
       {/* MENU */}
