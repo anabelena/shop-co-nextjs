@@ -1,6 +1,7 @@
 import "./globals.css";
 import { satoshi, oswald } from "./fonts/fonts";
 import Header from "@/components/Header";
+import Banner from "@/components/Banner";
 
 export default function RootLayout({
   children,
@@ -8,10 +9,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${satoshi.variable} ${oswald.variable}`}> 
+    <html lang="en" className={`${satoshi.variable} ${oswald.variable}`}>
       <body className="font-body">
-        {/* El Header se muestra en todas las páginas */}
-        <Header/>
+        <Banner />
+        <Header />
         {children}
       </body>
     </html>
