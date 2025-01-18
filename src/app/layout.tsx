@@ -11,9 +11,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${satoshi.variable} ${oswald.variable}`}>
       <body className="font-body">
-        <Banner />
-        <Header />
-        {children}
+        <div className="max-w-[1440px] mx-auto px-4">
+          <Banner />
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );

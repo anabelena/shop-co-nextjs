@@ -17,6 +17,10 @@ export default {
         'laptop': '1024px', 
         'desktop': '1280px',
       },
+      backgroundImage: {
+        'hero': "url('/assets/images/hero.svg')",
+        'hero-mobile': "url('/assets/images/hero-mobile.svg')", 
+      },
     },
   },
   plugins: [],
