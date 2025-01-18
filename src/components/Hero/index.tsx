@@ -4,8 +4,10 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="bg-neutral-200  tablet:bg-hero tablet:bg-cover tablet:bg-no-repeat tablet:min-h-[660px] tablet:flex tablet:items-center ">
-      <div className="px-8 py-4 flex flex-col gap-8 max-w-[75%] tablet:max-w-[50%] tablet:ml-[100px] ">
-        {/* Title */}
+      <div className="px-8 py-4 flex flex-col gap-8 max-w-[75%] tablet:ml-[100px] ">
+        {/* HERO INFO */}
+        <div className="tablet:max-w-[500px] grid grid-cols-1 gap-4">
+          {/* Title */}
         <h2 className="text-4xl leading-9 font-heading text-balance tablet:text-6xl tablet:leading-[64px]">
           FIND CLOTHES THAT MATCHES YOUR STYLE
         </h2>
@@ -15,9 +17,12 @@ export default function Hero() {
           designed to bring out your individuality and cater to your sense of
           style.
         </p>
-
         {/* Button */}
         <Button type="black" text="Shop now!" />
+        </div>
+        
+
+        
         {/* Adition Info */}
         <div className="grid grid-cols-1 justify-items-center items-center tablet:flex tablet:flex-row  tablet:gap-5 ">
           <div className="flex gap-5 ">
