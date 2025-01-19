@@ -6,44 +6,50 @@ export default function Home() {
     <>
       <Hero />
       {/* LOGOS SECTION */}
-      <section className="bg-neutral-800 grid grid-cols-3 justify-items-center items-center tablet:grid-cols-5 tablet:h-20">
-        <div className="relative w-28 tablet:w-36 h-20">
+
+      <section className="bg-neutral-800 flex flex-wrap items-center py-5 justify-around gap-5 ">
+        <div className="w-[110px] tablet:w-[150px]">
           <Image
             src="/assets/images/versace.svg"
-            layout="fill"
-            objectFit="contain"
+            width={166}
+            height={33}
+            layout="responsive"
             alt="versace"
           />
         </div>
-        <div className="relative w-28 h-7 tablet:w-36 tablet:h-10">
+        <div className="w-[80px] tablet:w-[90px]">
           <Image
             src="/assets/images/zara.svg"
-            layout="fill"
-            objectFit="contain"
+            width={90}
+            height={33}
+            layout="responsive"
             alt="zara"
           />
         </div>
-        <div className="relative w-28 tablet:w-36 h-20">
+        <div className=" w-[110px] tablet:w-[150px]">
           <Image
             src="/assets/images/gucci.svg"
-            layout="fill"
-            objectFit="contain"
+            width={156}
+            height={36}
+            layout="responsive"
             alt="gucci"
           />
         </div>
-        <div className="relative w-28 tablet:w-36 h-20">
+        <div className="w-[110px] tablet:w-[150px]">
           <Image
             src="/assets/images/prada.svg"
-            layout="fill"
-            objectFit="contain"
+            width={194}
+            height={32}
+            layout="responsive"
             alt="prada"
           />
         </div>
-        <div className="relative w-28 tablet:w-36 h-20">
+        <div className="w-[110px] tablet:w-[150px]">
           <Image
             src="/assets/images/calvin.svg"
-            layout="fill"
-            objectFit="contain"
+            width={200}
+            height={33}
+            layout="responsive"
             alt="calvin"
           />
         </div>
