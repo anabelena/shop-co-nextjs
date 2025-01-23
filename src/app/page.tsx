@@ -1,11 +1,14 @@
+
 import Hero from "@/components/Hero";
 import Image from "next/image";
 
 import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
+
   return (
     <>
+
       <Hero />
       {/* LOGOS SECTION */}
 
@@ -58,7 +61,8 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="font-heading font-bold text-3xl text-center tablet:text-4xl laptop:text-5xl tablet:my-10">NEW ARRIVALS
+        <h2 className="font-heading font-bold text-3xl text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
+          NEW ARRIVALS
         </h2>
         <ProductCard/>
       </section>
