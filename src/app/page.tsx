@@ -1,14 +1,16 @@
-
-import Hero from "@/components/Hero";
 import Image from "next/image";
 
+import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 
-export default function Home() {
+import { getProductsCategory } from "@/utils";
+import { IProduct } from "@/types/product";
+
+export default async function Home() {
+  const newArrivals = await getProductsCategory();
 
   return (
     <>
-
       <Hero />
       {/* LOGOS SECTION */}
 
@@ -18,7 +20,6 @@ export default function Home() {
             src="/assets/images/versace.svg"
             width={166}
             height={33}
-            layout="responsive"
             alt="versace"
           />
         </div>
@@ -27,7 +28,6 @@ export default function Home() {
             src="/assets/images/zara.svg"
             width={90}
             height={33}
-            layout="responsive"
             alt="zara"
           />
         </div>
@@ -36,7 +36,6 @@ export default function Home() {
             src="/assets/images/gucci.svg"
             width={156}
             height={36}
-            layout="responsive"
             alt="gucci"
           />
         </div>
@@ -45,7 +44,6 @@ export default function Home() {
             src="/assets/images/prada.svg"
             width={194}
             height={32}
-            layout="responsive"
             alt="prada"
           />
         </div>
@@ -54,17 +52,28 @@ export default function Home() {
             src="/assets/images/calvin.svg"
             width={200}
             height={33}
-            layout="responsive"
+            
             alt="calvin"
           />
         </div>
       </section>
 
-      <section>
-        <h2 className="font-heading font-bold text-3xl text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
+      <section className="max-w-[1440px] grid grid-cols-1 gap-8 mb-8">
+      <h2 className="font-heading font-bold text-3xl  text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
           NEW ARRIVALS
         </h2>
-        <ProductCard/>
+        <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
+          {newArrivals.map((item: IProduct) => (
+            <ProductCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              description={item.description}
+              image={item.image}
+            />
+          ))}
+        </div>
       </section>
     </>
   );
