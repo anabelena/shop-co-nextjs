@@ -39,7 +39,14 @@ export default function ProductCard({
           </h3>
           {/* Product Rating */}
           <div className="flex items-center gap-2">
-            {/* <Image src='./assets/icons/star.png' alt="icono estrella"/> */}
+
+            <Image
+              src="/assets/icons/star.png"
+              alt="icono estrella"
+              width={10}
+              height={10}
+            />
+
             <p className="text-xs">
               {rating?.rate} <span className="text-neutral-500">/5</span>
             </p>
