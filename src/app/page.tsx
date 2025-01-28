@@ -7,10 +7,7 @@ import { getProductsCategory } from "@/utils";
 import { IProduct } from "@/types/product";
 
 export default async function Home() {
-
   const newArrivals = await getProductsCategory();
-
-  console.log(newArrivals)
 
   return (
     <>
@@ -59,12 +56,13 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="max-w-[1440px] grid grid-cols-1 gap-8 mb-8">
+      {/* NEW ARRIVALS */}
+      <section className="grid grid-cols-1 gap-8 ">
         <h2 className="font-heading font-bold text-3xl  text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
           NEW ARRIVALS
         </h2>
         <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
-          {newArrivals.slice(0,4).map((item: IProduct) => (
+          {newArrivals.slice(0, 4).map((item: IProduct) => (
             <ProductCard
               key={item.id}
               id={item.id}
@@ -72,8 +70,90 @@ export default async function Home() {
               price={item.price}
               description={item.description}
               image={item.image}
+              rating={item.rating}
             />
           ))}
+        </div>
+      </section>
+
+      <div className="my-10 flex justify-center items-center">
+        <Image
+          src={"assets/images/line.svg"}
+          alt="line"
+          width={1240}
+          height={1}
+        ></Image>
+      </div>
+
+      {/* TOP SELLING */}
+      <section className="grid grid-cols-1 gap-8 ">
+        <h2 className="font-heading font-bold text-3xl  text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
+          TOP SELLING
+        </h2>
+        <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
+          {newArrivals.slice(0, 4).map((item: IProduct) => (
+            <ProductCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              description={item.description}
+              image={item.image}
+              rating={item.rating}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* BROWSE BY DRESS STYLE */}
+      <section className="bg-stone-200 border-1 rounded-3xl py-5">
+
+        <h2 className="font-heading font-bold text-3xl text-center tablet:text-4xl laptop:text-5xl my-8">
+          BROWSE BY DRESS STYLE
+        </h2>
+
+        <div className="grid grid-cols-1 justify-items-center tablet:flex tablet:justify-center tablet:items-center gap-5 mb-5">
+          <div className="relative w-full h-28 tablet:w-[407px] tablet:h-[289px]">
+            <Image
+              className="rounded-md object-cover"
+              src="/assets/images/casual-style.png"
+              alt="Casual Style"
+              fill
+            />
+            <p className="absolute top-6 left-9 font-bold text-4xl"> Casual </p>
+          </div>
+
+          <div className="relative w-full h-28 tablet:w-[684px] tablet:h-[289px]">
+            <Image
+              className="rounded-md object-cover"
+              src="/assets/images/formal-style.png"
+              alt="Formal Style"
+              fill
+            />
+            <p className="absolute top-6 left-9 font-bold text-4xl"> Formal </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 justify-items-center tablet:flex tablet:justify-center tablet:items-center gap-6 mb-5">
+          <div className="relative w-full h-28 tablet:w-[684px] tablet:h-[289px]">
+            <Image
+              className="rounded-md object-cover"
+              src="/assets/images/party-style.png"
+              alt="Party Style"
+              fill
+            />
+            <p className="absolute top-6 left-9 font-bold text-4xl"> Party </p>
+          </div>
+
+          <div className="relative w-full h-28 tablet:w-[407px] tablet:h-[289px]">
+            <Image
+              className="rounded-md object-cover"
+              src="/assets/images/gym-style.png"
+              alt="Gym Style"
+              fill
+            />
+            <p className="absolute top-6 left-9 font-bold text-4xl"> Gym </p>
+          </div>
         </div>
       </section>
     </>
