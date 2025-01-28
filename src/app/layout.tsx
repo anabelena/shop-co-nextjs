@@ -2,6 +2,7 @@ import "./globals.css";
 import { satoshi, oswald } from "./fonts/fonts";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
+import Newsletter from "@/components/Newsletter";
 
 export default function RootLayout({
   children,
@@ -15,6 +16,7 @@ export default function RootLayout({
           <Banner />
           <Header />
           {children}
+          <Newsletter/>
         </main>
       </body>
     </html>
