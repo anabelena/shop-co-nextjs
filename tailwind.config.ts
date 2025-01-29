@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors:{
+          baseBg: 'hsla(0,0%,94%,1)',
+          responsiveBg:'hsla(330, 7%, 95%, 1)',
+      },
       fontFamily:{
         body:['var(--body-font)','sans-serif'],
         heading:['var(--heading-font)','sans-serif']

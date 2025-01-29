@@ -3,16 +3,16 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-around my-2 tablet:justify-center items-center gap-11 tablet:my-10 tablet:w-full">
+    <header className="flex items-center justify-around my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
       {/* LOGO */}
-      <div className="flex gap-5 items-center">
-        <FaBars className="text-lg block tablet:hidden cursor-pointer" />
-        <Link href={"/"} className="text-xl tablet:text-3xl font-bold font-heading cursor-pointer"> SHOP.CO </Link>
+      <div className="flex gap-4 tablet:gap-6 laptop:gap-7 items-center">
+        <FaBars className="text-lg block desktop:hidden cursor-pointer" />
+        <Link href={"/"} className="text-xl tablet:text-2xl laptop:text-3xl font-bold font-heading cursor-pointer"> SHOP.CO </Link>
       </div>
 
       {/* MENU */}
-      <div className="hidden laptop:flex justify-center items-center">
-        <ul className="text-lg gap-5 flex justify-center items-center">
+      <nav className="hidden desktop:flex flex-wrap justify-center items-center">
+        <ul className="desktop:text-lg gap-7 flex justify-center items-center">
           <li>
             <a href="#shop" className="no-underline">
               Shop
@@ -34,13 +34,13 @@ export default function Header() {
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
 
       {/* SEARCH PRODUCTS */}
-      <div className="hidden tablet:flex items-center bg-neutral-200 gap-3 px-3 py-4 rounded-[62px] w-[550px]">
+      <div className="hidden tablet:flex items-center bg-baseBg gap-4 px-5 py-3 rounded-[62px] tablet:w-[400px] laptop:w-[480px] desktop:w-[520px]">
         <FaSearch className="text-gray-600 cursor-pointer text-xl" />
         <input
-          className="border-none bg-neutral-200 outline-none"
+          className="border-none outline-none  bg-baseBg w-full"
           type="text"
           placeholder="Search for products..."
         />

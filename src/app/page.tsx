@@ -58,10 +58,10 @@ export default async function Home() {
 
       {/* NEW ARRIVALS */}
       <section className="grid grid-cols-1 gap-8 ">
-        <h2 className="font-heading font-bold text-3xl  text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
+        <h2 className="font-heading font-bold text-3xl  text-center my-5 tablet:text-4xl laptop:text-5xl tablet:my-10">
           NEW ARRIVALS
         </h2>
-        <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
+        <div className="grid grid-cols-2 gap-5 p-2 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
           {newArrivals.slice(0, 4).map((item: IProduct) => (
             <ProductCard
               key={item.id}

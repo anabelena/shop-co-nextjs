@@ -17,63 +17,78 @@ export default function ProductCard({
   showImage = true,
   showDescription = false,
 }: ProductCardProps) {
-  const Discount = 20;
-  const priceDiscount = price - price * (Discount / 100);
+  const Discount: number = 20;
+  const priceDiscount: number = price - price * (Discount / 100);
+
+  const arrayStars: number[] = [];
+ 
+  if (rating !== undefined) {
+    const  stars = Math.floor(rating?.rate);
+    for (let i = 0; i < stars; i++) {
+      arrayStars.push(i);
+    }
+  }
 
   return (
-      <div className="grid grid-cols-1 gap-5 justify-items-center w-[180px] tablet:w-full">
-        {showImage && (
-          <div className="rounded-xl border-neutral-200 border-2 cursor-pointer">
-            <Link href={`/products/${id}`}>
-              <Image className="w-[172px] h-[174px] hover:shadow-xl mx-auto tablet:w-[300px] tablet:h-[300px]"
-                src={image}
-                alt={image.slice(0, 11)} //10 characters
-                width={295}
-                height={298}
-                style={{objectFit: "contain"}}
-               />
-            </Link>
-          </div>
-        )}
-
-        {/* Product Information */}
-        <div className="grid grid-cols-1 gap-1">
-          {/* Product Title */}
-          <h3 className="font-bold">
-            <Link href={`products/${id}`}> {title.slice(0, 25)} </Link>
-          </h3>
-          {/* Product Rating */}
-          <div className="flex items-center gap-2">
-
+    <div className="grid grid-cols-1 gap-5 justify-items-center w-[150px] tablet:w-full">
+      {showImage && (
+        <div className="rounded-xl border-neutral-200 border-2 cursor-pointer">
+          <Link href={`/products/${id}`}>
             <Image
-              src="/assets/icons/star.png"
-              alt="icono estrella"
-              width={10}
-              height={10}
+              className="w-[150px] h-[200px] hover:shadow-xl mx-auto tablet:w-[300px] tablet:h-[300px]"
+              src={image}
+              alt={image.slice(0, 11)} //10 characters
+              width={295}
+              height={298}
+              style={{ objectFit: "contain" }}
             />
-
-            <p className="text-xs">
-              {rating?.rate} <span className="text-neutral-500">/5</span>
-            </p>
-          </div>
-
-          {/* Product Price */}
-          <div className="flex items-center gap-4">
-            <span className="font-bold ">{`$${price}`}</span>
-            <span className="font-bold  line-through text-neutral-600">
-              {`$${priceDiscount}`}
-            </span>
-            <div className="text-red100 font-semibold w-[50px] text-center rounded-lg py-1 bg-red-200">
-              {`-${Discount}`}
-            </div>
-          </div>
-          {/* Product Description */}
-          {showDescription && (
-            <p className="text-neutral-700 text-justify my-2">
-              {description?.slice(0, 100)}
-            </p>
-          )}
+          </Link>
         </div>
+      )}
+
+      {/* Product Information */}
+      <div className="grid grid-cols-1 gap-1">
+        {/* Product Title */}
+        <h3 className="font-bold text-sm tablet:text-lg">
+          <Link href={`products/${id}`}> {title.slice(0, 11)} </Link>
+        </h3>
+        {/* Product Rating */}
+        <div className="flex items-center gap-1">
+
+        {arrayStars.map((item) => (
+        <Image
+          key={item}
+          src="/assets/icons/star.png" 
+          alt="Estrella"
+          width={10}  
+          height={10} 
+        />
+      ))}
+
+        
+
+          <p className="text-xs tablet:text-sm">
+            {rating?.rate} <span className="text-neutral-500">/5</span>
+          </p>
+        </div>
+
+        {/* Product Price */}
+        <div className="flex items-center gap-4 text-sm tablet:text-lg">
+          <span className="font-bold ">{`$${price}`}</span>
+          <span className="font-bold  line-through text-neutral-600">
+            {`$${priceDiscount}`}
+          </span>
+          <div className="text-red100 font-semibold w-[50px] text-center rounded-lg py-1 bg-red-200">
+            {`-${Discount}`}
+          </div>
+        </div>
+        {/* Product Description */}
+        {showDescription && (
+          <p className="text-neutral-700 text-justify my-2">
+            {description?.slice(0, 100)}
+          </p>
+        )}
       </div>
+    </div>
   );
 }
