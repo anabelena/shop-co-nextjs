@@ -16,7 +16,7 @@ export default function RootLayout({
           <Banner />
           <Header />
           {children}
-          <Footer/>
+          {/* <Footer/> */}
         </main>
       </body>
     </html>

@@ -7,6 +7,7 @@ import { getProductsCategory } from "@/utils";
 import { IProduct } from "@/types/product";
 
 export default async function Home() {
+  
   const newArrivals = await getProductsCategory();
 
   return (
