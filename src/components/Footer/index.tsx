@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="relative flex justify-around items-center w-full bg-baseBg py-10">
 
-     <Newsletter/>
+     {/* <Newsletter/> */}
 
       <div className="grid grid-cols-1 gap-5 tablet:w-[230px]">
         <p className="text-xl tablet:text-3xl font-bold font-heading ">

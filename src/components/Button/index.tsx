@@ -10,13 +10,13 @@ type  ButtonProps = {
 const Button = ({ type = 'transparent', color , text, onClick, fullWidth,fullHeight }:ButtonProps) => {
     
     const baseStyles =
-      'flex items-center justify-center rounded-[62px] font-bold text-sm cursor-pointer transition duration-300';
+      'flex items-center justify-center rounded-[62px] px-3 font-bold text-sm cursor-pointer transition duration-300';
   
     const stylesByType = {
       transparent: 'bg-transparent text-black border border-black hover:bg-black hover:text-white',
       white: 'bg-white text-black hover:bg-black hover:text-white border border-white',
       black: 'bg-black text-white hover:bg-white hover:text-black border border-black',
-      rounded:'rounded-full'
+      rounded:'rounded-full w-full h-full'
     };
 
     const widthStyles = fullWidth ? 'w-full' : 'tablet:w-[218px]'

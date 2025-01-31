@@ -1,10 +1,10 @@
 export const sizes = [
-    { size: "XS", description: "Extra Small" },
-    { size: "S", description: "Small" },
-    { size: "M", description: "Medium" },
-    { size: "L", description: "Large" },
-    { size: "XL", description: "Extra Large" },
-    { size: "XXL", description: "Double Extra Large" }
+    { name: "XS", description: "Extra Small" },
+    { name: "S", description: "Small" },
+    { name: "M", description: "Medium" },
+    { name: "L", description: "Large" },
+    { name: "XL", description: "Extra Large" },
+    { name: "XXL", description: "Double Extra Large" }
   ];
 
   

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Thumbnail({ images }: { images: string[] }) {
+  
   const [mainImage, setMainImage] = useState(images[0]);
 
   return (

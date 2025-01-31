@@ -49,7 +49,7 @@ export default function ProductCard({
         <div className="rounded-xl border-neutral-200 border-2 cursor-pointer">
           <Link href={`/products/${id}`} key={id}>
             <Image
-              className="w-[150px] h-[200px] hover:shadow-xl mx-auto tablet:w-[300px] tablet:h-[300px]"
+              className="w-[150px] h-[200px] hover:shadow-xl mx-auto tablet:w-[200px] tablet:h-[200px]"
               src={image}
               alt={title.slice(0, 11)} //10 characters
               width={295}
