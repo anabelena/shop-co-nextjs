@@ -1,7 +1,15 @@
+'use client'
+
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import Link from "next/link";
+import { useShoppingCart } from "@/context/cartContext";
+import { useState } from "react";
+
 
 export default function Header() {
+
+const {count} = useShoppingCart()
+
   return (
     <header className="flex items-center justify-around my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
       {/* LOGO */}
@@ -52,7 +60,7 @@ export default function Header() {
         <div className="relative">
           <FaShoppingCart className="text-lg tablet:text-xl cursor-pointer" />
           <span className="absolute bottom-4 left-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center items-center">
-            3
+            {count}
           </span>
         </div>
         <FaUser className="text-lg tablet:text-xl cursor-pointer" />

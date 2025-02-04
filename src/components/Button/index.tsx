@@ -1,5 +1,5 @@
 type  ButtonProps = {
-    type?:'transparent'|'black'|'white'|'rounded'; 
+    type?:'neutral'|'transparent'|'black'|'white'|'rounded'; 
     color?:string;  
     text:string;         
     onClick?:()=>void;    
@@ -7,13 +7,14 @@ type  ButtonProps = {
     fullHeight?:boolean; 
 }
 
-const Button = ({ type = 'transparent', color , text, onClick, fullWidth,fullHeight }:ButtonProps) => {
+const Button = ({ type = 'neutral', color , text, onClick, fullWidth,fullHeight }:ButtonProps) => {
     
     const baseStyles =
-      'flex items-center justify-center rounded-[62px] px-3 font-bold text-sm cursor-pointer transition duration-300';
+      'flex items-center justify-center rounded-[60px] px-3 text-sm cursor-pointer transition duration-300';
   
     const stylesByType = {
       transparent: 'bg-transparent text-black border border-black hover:bg-black hover:text-white',
+      neutral:'bg-baseBg',
       white: 'bg-white text-black hover:bg-black hover:text-white border border-white',
       black: 'bg-black text-white hover:bg-white hover:text-black border border-black',
       rounded:'rounded-full w-full h-full'

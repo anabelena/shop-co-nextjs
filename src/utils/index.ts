@@ -10,7 +10,7 @@ export async function getProducts() {
   return data;
 }
 
-export async function getProductById(id: string) {
+export async function getProductById(id: string):Promise<IProduct> {
 
   if (!process.env.NEXT_PUBLIC_PRODUCTS) {
     throw new Error("NEXT_PUBLIC_PRODUCTS is not defined");
@@ -28,7 +28,7 @@ export async function getProductById(id: string) {
   return data;
 }
 
-export async function getProductsCategory() {
+export async function getProductsCategory():Promise<string[]> {
   if (!process.env.NEXT_PUBLIC_CATEGORY) {
     throw new Error("NEXT_PUBLIC_CATEGORY is not defined");
   }
@@ -37,7 +37,7 @@ export async function getProductsCategory() {
   return data
 }
 
-export async function getThumbnailImage(){
+export async function getThumbnailImage():Promise<string[]>{
 
   if (!process.env.NEXT_PUBLIC_IMAGE){
     throw new Error("NEXT_PUBLIC_IMAGE is not defined")

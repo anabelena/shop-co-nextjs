@@ -5,9 +5,10 @@ import { createContext, useState, ReactNode,useContext } from "react";
 interface CartItem {
   id: number;
   title: string;
-  description: string;
   price:number;
   image:string;
+  color:string|null;
+  size:string|null;
   quantity: number;
 }
 
@@ -25,6 +26,7 @@ export const ShoppingCartContext = createContext<ShoppingCartContextType | null>
 export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
 
   const [count, setCount] = useState<number>(0);
+
   const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
@@ -33,13 +35,13 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ShoppingCartContext.Provider
-      value={{ count, setCount, cartProducts, setCartProducts, addToCart }}
-    >
+    <ShoppingCartContext.Provider value={{ count, setCount, cartProducts, setCartProducts, addToCart }}>
       {children}
     </ShoppingCartContext.Provider>
   );
 };
+
+
 
 // Hook personalizado para evitar valores `undefined`
 export function useShoppingCart() {

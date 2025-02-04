@@ -1,4 +1,4 @@
-export const sizes = [
+export const sizeData = [
     { name: "XS", description: "Extra Small" },
     { name: "S", description: "Small" },
     { name: "M", description: "Medium" },

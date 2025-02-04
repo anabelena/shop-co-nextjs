@@ -1,4 +1,4 @@
-export const colors = [
+export const colorsData = [
     { name: "red", hex: "#FF0000" },
     { name: "blue", hex: "#0000FF" },
     { name: "yellow", hex: "#FFFF00" },
