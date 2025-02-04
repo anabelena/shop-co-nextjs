@@ -2,17 +2,17 @@
 
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import Link from "next/link";
-import { useShoppingCart } from "@/context/cartContext";
-import { useState } from "react";
 
+import { useShoppingCart } from "@/Hooks/useShoppingCart";
 
 export default function Header() {
 
-const {count} = useShoppingCart()
-
+const {count,cartProducts} = useShoppingCart()
+console.log(cartProducts)
   return (
     <header className="flex items-center justify-around my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
       {/* LOGO */}
+    
       <div className="flex gap-4 tablet:gap-6 laptop:gap-7 items-center">
         <FaBars className="text-lg block desktop:hidden cursor-pointer" />
         <Link href={"/"} className="text-xl tablet:text-2xl laptop:text-3xl font-bold font-heading cursor-pointer"> SHOP.CO </Link>

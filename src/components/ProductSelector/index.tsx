@@ -1,54 +1,40 @@
-'use client'
+"use client";
 
 import { SetStateAction, useState } from "react";
-
-import Button from "../Button";
-
+import { useShoppingCart } from "@/Hooks/useShoppingCart";
 import { colorsData } from "@/data/colors";
 import { sizeData } from "@/data/size";
 import { Check } from "lucide-react";
 import { IProduct } from "@/types/product";
 
 import QuantitySelector from "../QuantitySelector";
+import Button from "../Button";
 
-import { useShoppingCart } from "@/context/cartContext";
-
-export default function ProductSelector({ id, title, price,image }:IProduct) {
-
+export default function ProductSelector({ id, title, price, image }: IProduct) {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const { addToCart } = useShoppingCart();
 
-  const {addToCart} = useShoppingCart();
-
-  const handleColor = (color: SetStateAction<string|null>) => {
+  const handleColor = (color: SetStateAction<string | null>) => {
     setSelectedColor(color);
   };
 
-  const handleSize = (size:  SetStateAction<string|null>) => {
+  const handleSize = (size: SetStateAction<string | null>) => {
     setSelectedSize(size);
   };
 
   const handleAddToCart = () => {
-
     const cartItem = {
-
-      id:id,
-      title:title,
-      price:price,
-      image:image,
-      color:selectedColor,
-      size:selectedSize,
-      quantity:1,
-
+      id,
+      title,
+      price,
+      image,
+      color: selectedColor,
+      size: selectedSize,
+      quantity: 1,
     };
 
-    console.log(cartItem)
-    
-    addToCart(cartItem)
-
-
-
+    addToCart(cartItem);
   };
 
   return (
@@ -77,7 +63,7 @@ export default function ProductSelector({ id, title, price,image }:IProduct) {
 
       <hr className="mb-2" />
 
-      <section >
+      <section>
         <h3> Select a size </h3>
         <div className="flex gap-2 h-[35px] my-4">
           {sizeData.map((size) => (
