@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IProduct } from "@/types/product";
+import RatingStars from "../RatingStars";
 
 interface ProductCardProps extends IProduct {
   showImage?: boolean;
@@ -19,18 +20,8 @@ export default function ProductCard({
   showDescription = false,
   titleSize = "md",
 }: ProductCardProps) {
-  
   const Discount: number = 20;
   const priceDiscount: number = price - price * (Discount / 100);
-
-  const arrayStars: number[] = [];
-
-  if (rating !== undefined) {
-    const stars = Math.floor(rating?.rate);
-    for (let i = 0; i < stars; i++) {
-      arrayStars.push(i);
-    }
-  }
 
   let titleClass = "text-[20px]";
 
@@ -64,20 +55,11 @@ export default function ProductCard({
       <div className="grid grid-cols-1 gap-1">
         {/* Product Title */}
         <h3 className={`font-bold ${titleClass}`}>
-          <Link href={`products/${id}`}> {title.slice(0,titleSlice)} </Link>
+          <Link href={`products/${id}`}> {title.slice(0, titleSlice)} </Link>
         </h3>
         {/* Product Rating */}
         <div className="flex items-center gap-1">
-          {arrayStars.map((item) => (
-            <Image
-              key={item}
-              src="/assets/icons/star.png"
-              alt="Estrella"
-              width={10}
-              height={10}
-            />
-          ))}
-
+          <RatingStars rating={rating?.rate} />
           <p className="text-xs tablet:text-sm">
             {rating?.rate} <span className="text-neutral-500">/5</span>
           </p>
