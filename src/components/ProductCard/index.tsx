@@ -35,7 +35,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-5 justify-items-center w-[150px] tablet:w-full">
+    <div className="grid grid-cols-1 justify-items-center w-[150px] tablet:w-full">
       {showImage && (
         <div className="rounded-xl border-neutral-200 border-2 cursor-pointer">
           <Link href={`/products/${id}`} key={id}>
@@ -52,7 +52,7 @@ export default function ProductCard({
       )}
 
       {/* Product Information */}
-      <div className="grid grid-cols-1 gap-1">
+      <div className="grid grid-cols-1">
         {/* Product Title */}
         <h3 className={`font-bold ${titleClass}`}>
           <Link href={`products/${id}`}> {title.slice(0, titleSlice)} </Link>

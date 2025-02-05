@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import Link from "next/link";
@@ -6,16 +6,21 @@ import Link from "next/link";
 import { useShoppingCart } from "@/Hooks/useShoppingCart";
 
 export default function Header() {
+  const { count } = useShoppingCart();
 
-const {count,cartProducts} = useShoppingCart()
-console.log(cartProducts)
   return (
     <header className="flex items-center justify-between my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
       {/* LOGO */}
-    
+
       <div className="flex gap-4 tablet:gap-6 laptop:gap-7 items-center">
         <FaBars className="text-lg block desktop:hidden cursor-pointer" />
-        <Link href={"/"} className="text-xl tablet:text-2xl laptop:text-3xl font-bold font-heading cursor-pointer"> SHOP.CO </Link>
+        <Link
+          href={"/"}
+          className="text-xl tablet:text-2xl laptop:text-3xl font-bold font-heading cursor-pointer"
+        >
+          {" "}
+          SHOP.CO{" "}
+        </Link>
       </div>
 
       {/* MENU */}
@@ -57,12 +62,17 @@ console.log(cartProducts)
       {/* ICONOS */}
       <div className="flex justify-center items-center gap-3 tablet:gap-5 ">
         <FaSearch className="block tablet:hidden cursor-pointer" />
-        <div className="relative">
-          <FaShoppingCart className="text-lg tablet:text-xl cursor-pointer" />
-          <span className="absolute bottom-4 left-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center items-center">
-            {count}
-          </span>
-        </div>
+        <Link href={count > 0 ? "/cart" : "#"}>
+          <div className="relative">
+            <FaShoppingCart className="text-lg tablet:text-xl cursor-pointer" />
+            {count > 0 && (
+              <span className="absolute bottom-4 left-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center items-center">
+                {count}
+              </span>
+            )}
+          </div>
+        </Link>
+
         <FaUser className="text-lg tablet:text-xl cursor-pointer" />
       </div>
     </header>

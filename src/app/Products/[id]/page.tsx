@@ -24,6 +24,7 @@ export default async function ProductPage({ params }: { params: Params }) {
         <Thumbnail images={imagesArray} />
 
         <div className="">
+          
           <ProductCard
             id={product.id}
             title={product.title}

@@ -5,9 +5,10 @@ type  ButtonProps = {
     onClick?:()=>void;    
     fullWidth?:boolean;   
     fullHeight?:boolean; 
+    children?:React.ReactNode
 }
 
-const Button = ({ type = 'neutral', color , text, onClick, fullWidth,fullHeight }:ButtonProps) => {
+const Button = ({ type = 'neutral', color , text, onClick, fullWidth,fullHeight,children }:ButtonProps) => {
     
     const baseStyles =
       'flex items-center justify-center rounded-[60px] px-3 text-sm cursor-pointer transition duration-300';
@@ -31,7 +32,8 @@ const Button = ({ type = 'neutral', color , text, onClick, fullWidth,fullHeight 
         style={{ backgroundColor: color }}
         className= {type != 'rounded' ? `${baseStyles} ${stylesByType[type]} ${widthStyles} ${heightStyles}` : `${stylesByType[type]}`}
       >
-        {text}
+        {text && <span>{text}</span>}
+        {children}
       </button>
     );
   };

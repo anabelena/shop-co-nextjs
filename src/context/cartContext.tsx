@@ -32,6 +32,7 @@ export const ShoppingCartContext = createContext<ShoppingCartContextType | null>
 export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
 
   const [count, setCount] = useState<number>(0);
+  
   const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
