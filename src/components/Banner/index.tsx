@@ -3,7 +3,7 @@ import { FaRegRectangleXmark } from "react-icons/fa6";
 export default function Banner() {
 
     return (
-      <section className="flex flex-row justify-center items-center relative bg-neutral-800 text-neutral-200 h-10 py-1">
+      <section className="mx-auto max-w-[1440px] flex flex-row justify-center items-center relative bg-neutral-800 text-neutral-200 h-10 py-1">
         <p className="text-xs underline font-normal cursor-pointer tablet:text-sm tablet:font-bold hover:scale-110">
           Sign up and get 20% off to your first order. <span className="font-semibold"> Sign Up Now </span>
         </p>

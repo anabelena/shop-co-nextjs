@@ -10,7 +10,7 @@ export default function Header() {
 const {count,cartProducts} = useShoppingCart()
 console.log(cartProducts)
   return (
-    <header className="flex items-center justify-around my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
+    <header className="flex items-center justify-between my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
       {/* LOGO */}
     
       <div className="flex gap-4 tablet:gap-6 laptop:gap-7 items-center">

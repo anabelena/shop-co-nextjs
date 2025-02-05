@@ -1,31 +1,31 @@
 export const reviews = [
   {
     name: "John Doe",
-    review: "Great product, really loved the quality!",
+    review: "Great product, really loved the quality! I would buy it again! I love the fabric",
     date: "2025-02-01",
-    star: 5,
+    star: 4.8,
   },
   {
     name: "Jane Smith",
-    review: "Good value for the price, but the color didn't match the image.",
+    review: "This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for both design and fashion.",
     date: "2025-01-28",
-    star: 3,
+    star: 3.2,
   },
   {
     name: "Mary Johnson",
     review: "Amazing! Exceeded my expectations.",
     date: "2025-01-20",
-    star: 5,
+    star: 5.5,
   },
   {
     name: "James Brown",
     review: "It's decent, but the sizing is off.",
     date: "2025-01-18",
-    star: 3,
+    star: 3.4,
   },
   {
     name: "Emily Davis",
-    review: "Love it! The material is so soft and comfortable.",
+    review: "Love it! The material is so soft and comfortable. It's like wearing a piece of art that reflects my passion for both design and fashio",
     date: "2025-01-15",
     star: 4,
   },
@@ -37,9 +37,9 @@ export const reviews = [
   },
   {
     name: "Sarah Wilson",
-    review: "Great customer service and fast shipping!",
+    review: "Great customer It's like wearing a piece of art that reflects my passion for both design and fashio service and fast shipping!",
     date: "2025-01-10",
-    star: 4,
+    star: 4.5,
   },
   {
     name: "David Moore",
@@ -57,7 +57,7 @@ export const reviews = [
     name: "William Anderson",
     review: "It was okay, but not the best quality.",
     date: "2025-01-01",
-    star: 3,
+    star: 3.7,
   },
   {
     name: "Isabella Thomas",
@@ -81,7 +81,7 @@ export const reviews = [
     name: "Daniel Harris",
     review: "Would not recommend. The item was damaged on arrival.",
     date: "2024-12-20",
-    star: 2,
+    star: 2.9,
   },
   {
     name: "Charlotte Martin",
@@ -121,7 +121,7 @@ export const reviews = [
   },
   {
     name: "Mia Hall",
-    review: "Exactly what I was looking for. Highly recommend!",
+    review: "Exactly what I was looking for. Highly recommend! It's like wearing a piece of art that reflects my passion for both design and fashio",
     date: "2024-12-03",
     star: 5,
   },

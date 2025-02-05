@@ -1,33 +1,28 @@
-import { reviews } from "@/data/reviews"
-import { LucideStarHalf,LucideStar } from "lucide-react";
+import RatingStars from "../RatingStars";
+import { CircleCheckBig } from "lucide-react";
 
-export default function ProductReview(){
+interface ProductReviewProps {
+  name: string;
+  review: string;
+  date: string;
+  star: number;
+}
 
-    return(
-        <div>
-        <h2> All Reviews </h2>
-        {reviews.map((review, index) => (
-          <div
-            key={index}
-            className="border-2 rounded-sm grid grid-cols-1 gap-3 p-4"
-          >
-            <div className="flex space-x-1">
-              {Array.from({ length: review.star }).map((_, starIndex) => (
-                <img
-                  key={starIndex}
-                  src={StarIcon}
-                  alt="Star"
-                  className="w-4 h-4"
-                />
-              ))}
-            </div>
-  
-            <p className="text-lg font-bold">{review.name}</p>
-            <p className="text-sm font-extralight">{review.review}</p>
-            <p className="text-xs text-gray-500">{review.date}</p>
-      
-          </div>
-        ))}
+export default function ProductReview({
+  name,
+  review,
+  date,
+  star,
+}: ProductReviewProps) {
+  return (
+    <div className="grid grid-cols-1 gap-1">
+      <RatingStars rating={star} />
+      <div className="flex gap-2 items-center">
+        <p className="text-lg font-bold">{name}</p>
+        <CircleCheckBig color="green" size={20}  />
       </div>
-    );
+      <p className="text-lg">{review}</p>
+      <p className="text-sm text-gray-500">{date}</p>
+    </div>
+  );
 }
