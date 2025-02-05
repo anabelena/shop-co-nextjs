@@ -8,14 +8,20 @@ import { getProductById, getThumbnailImage } from "@/utils";
 type Params = Promise<{ id: string }>;
 
 export default async function ProductPage({ params }: { params: Params }) {
+  
   const { id } = await params;
+  
   const product = await getProductById(id);
+
   const images = await getThumbnailImage();
 
+  const imagesArray = [product.image,...images]
+  
   return (
     <>
       <section className="flex justify-center items-center gap-8">
-        <Thumbnail images={images} />
+        
+        <Thumbnail images={imagesArray} />
 
         <div className="">
           <ProductCard
