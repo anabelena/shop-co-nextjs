@@ -13,6 +13,7 @@ import Button from "../Button";
 export default function ProductSelector({ id, title, price, image }: IProduct) {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [quantity,setQuantity]=useState<number>(1);
   const { addToCart } = useShoppingCart();
 
   const handleColor = (color: SetStateAction<string | null>) => {
@@ -31,10 +32,11 @@ export default function ProductSelector({ id, title, price, image }: IProduct) {
       image,
       color: selectedColor,
       size: selectedSize,
-      quantity: 1,
+      quantity,
     };
 
     addToCart(cartItem);
+
   };
 
   return (
@@ -82,7 +84,10 @@ export default function ProductSelector({ id, title, price, image }: IProduct) {
       </section>
 
       <div className="flex gap-5 my-8">
-        <QuantitySelector />
+
+        <QuantitySelector 
+        quantity={quantity}
+        setQuantity={setQuantity}/>
 
         <div className="w-[200px]">
           <Button

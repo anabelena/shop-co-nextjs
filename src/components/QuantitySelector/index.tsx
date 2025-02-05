@@ -1,20 +1,22 @@
-import { useState } from "react";
-import Button from "../Button";
+import Button from "../Button"
 
-export default function QuantitySelector() {
+interface QuantitySelectorProps {
+  quantity:number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function QuantitySelector({quantity,setQuantity}:QuantitySelectorProps) {
   
-  const [quantity, setQuantity] = useState(1);
-
   const handleIncrement = () => {
-    setQuantity((prevQuantity) =>
-      prevQuantity <= 9 ? prevQuantity + 1 : prevQuantity
-    );
-  };
+    setQuantity((prevQuantity) => prevQuantity <= 9 ? prevQuantity + 1 : quantity)
+  }
 
   const handleDecrement = () => {
-    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-  };
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? quantity - 1 : 1))
+  }
+
   return (
+    
     <div className="flex justify-center items-center w-[130px] gap-2 bg-baseBg rounded-full px-2 py-2">
       
       <Button
