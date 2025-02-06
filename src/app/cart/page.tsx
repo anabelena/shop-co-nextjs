@@ -1,5 +1,4 @@
 "use client";
-
 import { useShoppingCart } from "@/Hooks/useShoppingCart";
 import Button from "@/components/Button";
 import QuantitySelector from "@/components/QuantitySelector";
@@ -7,12 +6,14 @@ import { MoveRight, Trash2 } from "lucide-react";
 import Image from "next/image";
 
 export default function Cart() {
+
   const { count, cartProducts, updateQuantity, removeFromCart } =
     useShoppingCart();
 
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        
         <div className="mx-auto max-w-4xl">
           <div className="text-left">
             <h1 className="font-heading font-bold text-xl text-gray-700 sm:text-3xl">
@@ -90,17 +91,17 @@ export default function Cart() {
 
                   <div className="flex justify-between">
                     <dt>Subtotal</dt>
-                    <dd>£25</dd>
+                    <dd>$25</dd>
                   </div>
 
                   <div className="flex justify-between">
                     <dt>Discount</dt>
-                    <dd>-£20</dd>
+                    <dd>-$20</dd>
                   </div>
 
                   <div className="flex justify-between !text-base font-medium">
                     <dt>Total</dt>
-                    <dd>£200</dd>
+                    <dd>$200</dd>
                   </div>
                 </dl>
 

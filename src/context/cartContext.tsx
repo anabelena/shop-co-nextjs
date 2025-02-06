@@ -49,21 +49,41 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateQuantity = (id: number, quantity: number) => {
-    setCartProducts((prev) =>
-      quantity <= 0
-        ? prev.filter((product) => product.id !== id)
-        : prev.map((product) =>
-            product.id === id
-              ? { ...product, quantity: quantity }
-              : product
-          )
-    );
+    setCartProducts((prev) => {
+      const updatedCart =
+        quantity <= 0
+          ? prev.filter((product) => product.id !== id) // Remove item if quantity is 0
+          : prev.map((product) =>
+              product.id === id ? { ...product, quantity: quantity } : product
+            );
+
+      // Calculate new total count
+      const newCount = updatedCart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      );
+      setCount(newCount); // Update count
+
+      return updatedCart;
+    });
   };
 
   const removeFromCart = (id: number) => {
-    setCartProducts((prev) => prev.filter((product) => product.id !== id));
-  };
+    
+    setCartProducts((prev) => {
 
+      const updatedCart = prev.filter((product) => product.id !== id); // Remove the product
+
+      // Recalculate the count based on the remaining products
+      const newCount = updatedCart.reduce(
+        (sum, product) => sum + product.quantity,
+        0
+      );
+      setCount(newCount); // Update the count
+
+      return updatedCart; // Return the updated cart
+    });
+  };
   return (
     <ShoppingCartContext.Provider
       value={{
