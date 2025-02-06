@@ -52,7 +52,7 @@ export default function ProductCard({
       )}
 
       {/* Product Information */}
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 gap-2">
         {/* Product Title */}
         <h3 className={`font-bold ${titleClass}`}>
           <Link href={`products/${id}`}> {title.slice(0, titleSlice)} </Link>
@@ -71,14 +71,14 @@ export default function ProductCard({
           <span className="font-bold  line-through text-neutral-600">
             {`$${priceDiscount}`}
           </span>
-          <div className="text-red100 font-semibold w-[50px] text-center rounded-lg py-1 bg-red-200">
-            {`-${Discount}`}
+          <div className="text-red-400 font-semibold text-center rounded-lg px-3 bg-red-200">
+            {` ${Discount} %`}
           </div>
         </div>
         {/* Product Description */}
         {showDescription && (
-          <p className="text-neutral-700 text-justify my-2">
-            {description?.slice(0, 100)}
+          <p className="text-neutral-700 text-justify my-2 text-balance">
+            {description?.slice(0, 110)}
           </p>
         )}
       </div>

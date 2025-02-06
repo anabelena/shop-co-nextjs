@@ -7,7 +7,8 @@ import { MoveRight, Trash2 } from "lucide-react";
 import Image from "next/image";
 
 export default function Cart() {
-  const { count, cartProducts } = useShoppingCart();
+  const { count, cartProducts, updateQuantity, removeFromCart } =
+    useShoppingCart();
 
   return (
     <section>
@@ -54,14 +55,21 @@ export default function Cart() {
 
                   <div className="flex flex-1 items-center justify-end gap-2">
                     <QuantitySelector
-                      quantity={1}
-                      setQuantity={() => console.log("hola")}
+                      quantity={product.quantity}
+                      handleIncrement={() => {
+                        if (product.quantity < 10) {
+                          updateQuantity(product.id, product.quantity + 1);
+                        }
+                      }}
+                      handleDecrement={() =>
+                        updateQuantity(product.id, product.quantity - 1)
+                      }
                     />
 
                     <Trash2
                       color="red"
                       className="cursor-pointer"
-                      onClick={() => console.log("borrar")}
+                      onClick={() => removeFromCart(product.id)}
                     />
                   </div>
                 </li>
@@ -74,7 +82,7 @@ export default function Cart() {
                   {" "}
                   Order Summary{" "}
                 </h3>
-                <dl className="space-y-0.5 text-sm text-gray-700 border border-red-400">
+                <dl className="space-y-0.5 text-sm text-gray-700">
                   <div className="flex justify-between">
                     <dt>Total Items</dt>
                     <dd>{count}</dd>
@@ -96,10 +104,10 @@ export default function Cart() {
                   </div>
                 </dl>
 
-                <div className="relative flex justify-end border border-black">
+                <div className="relative flex justify-end">
                   <div className=" flex justify-center relative">
-                    <Button type="black" text="Go to Checkout">
-                      <MoveRight color="white" />
+                    <Button type="neutral" text="Go to Checkout">
+                      <MoveRight />
                     </Button>
                   </div>
                 </div>

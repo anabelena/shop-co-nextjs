@@ -18,12 +18,15 @@ export default async function ProductPage({ params }: { params: Params }) {
   const imagesArray = [product.image,...images]
   
   return (
-    <>
-      <section className="flex justify-center items-center gap-8">
+    <section className="product-page">
+
+      <hr  className="my-5"/>
+
+      <section className="flex justify-around gap-8 mt-5">
         
         <Thumbnail images={imagesArray} />
 
-        <div className="">
+        <div className="tablet:max-w-[500px] laptop:max-w-[600px]">
           
           <ProductCard
             id={product.id}
@@ -34,6 +37,7 @@ export default async function ProductPage({ params }: { params: Params }) {
             rating={product.rating}
             showImage={false}
             showDescription={true}
+            titleSize="lg"
           />
 
           <ProductSelector
@@ -42,14 +46,16 @@ export default async function ProductPage({ params }: { params: Params }) {
             price={product.price}
             image={product.image}
           />
+
         </div>
       </section>
 
       <hr className="my-5 tablet:my-8 "/>
 
       <section className="mb-8">
-        
-        <div className="grid grid-cols-1 laptop:grid-cols-2 gap-y-2 justify-items-center">
+        <h3 className="font-bold  text-lg"> All Reviews <span className="text-gray-500"> (410) </span> </h3>
+
+        <div className="grid grid-cols-1 laptop:grid-cols-2 gap-y-2 my-3 justify-items-center">
           {reviews.map((item, index) => (
             <div
               key={index}
@@ -65,6 +71,6 @@ export default async function ProductPage({ params }: { params: Params }) {
           ))}
         </div>
       </section>
-    </>
+    </section>
   );
 }
