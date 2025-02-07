@@ -4,6 +4,7 @@ import ProductSelector from "@/components/ProductSelector";
 import ProductReview from "@/components/ProductReview";
 import { reviews } from "@/data/reviews";
 import { getProductById, getThumbnailImage } from "@/utils";
+import ProductCTA from "@/components/ProductFilter";
 
 type Params = Promise<{ id: string }>;
 
@@ -53,8 +54,11 @@ export default async function ProductPage({ params }: { params: Params }) {
       <hr className="my-5 tablet:my-8 "/>
 
       <section className="mb-8">
+        <div className="flex justify-around items-center">
         <h3 className="font-bold  text-lg"> All Reviews <span className="text-gray-500"> (410) </span> </h3>
-
+        <ProductCTA/>
+        </div>
+       
         <div className="grid grid-cols-1 laptop:grid-cols-2 gap-y-2 my-3 justify-items-center">
           {reviews.map((item, index) => (
             <div

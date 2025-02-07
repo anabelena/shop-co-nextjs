@@ -1,6 +1,5 @@
 import { IProduct } from './../types/product';
 
-
 export async function getProducts() {
   if (!process.env.NEXT_PUBLIC_PRODUCTS) {
     throw new Error("NEXT_PUBLIC_PRODUCTS is not defined");
@@ -42,9 +41,18 @@ export async function getThumbnailImage():Promise<string[]>{
   if (!process.env.NEXT_PUBLIC_IMAGE){
     throw new Error("NEXT_PUBLIC_IMAGE is not defined")
   }
-
   const response = await fetch(`${process.env.NEXT_PUBLIC_IMAGE}`)
   const data:IProduct[] = await response.json()
   const onlyImages:string[] = data.map(({image})=>image)
   return onlyImages
+}
+
+
+export async function getProductsByLimit(limit:number){
+  if (!process.env.NEXT_PUBLIC_PRODUCTS) {
+    throw new Error("NEXT_PUBLIC_PRODUCTS is not defined");
+  }
+  const response = await fetch(`${process.env.NEXT_PUBLIC_PRODUCTS}?limits=${limit}`);
+  const data = await response.json();
+  return data;
 }
