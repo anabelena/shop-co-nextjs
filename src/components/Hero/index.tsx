@@ -1,5 +1,6 @@
 import Button from "../Button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -19,12 +20,15 @@ export default function Hero() {
             designed to bring out your individuality and cater to your sense of
             style.
           </p>
-          {/* Button */}
-          <Button 
-          type="black" 
-          text="Shop now!"
-          fullHeight={false}
-          fullWidth={false} />
+          {/* Call to Action -> SHOP NOW! */}
+          <Link href={"/products"}>
+            <Button
+              type="black"
+              text="Shop now!"
+              fullHeight={false}
+              fullWidth={false}
+            />
+          </Link>
         </div>
 
         {/* Adition Info */}
@@ -32,7 +36,10 @@ export default function Hero() {
           <div className="flex gap-5 ">
             <div>
               <span className="font-bold text-xl tablet:text-4xl"> 200 + </span>
-              <p className="text-neutral-700 text-sm tablet:text-lg"> International Brands</p>
+              <p className="text-neutral-700 text-sm tablet:text-lg">
+                {" "}
+                International Brands
+              </p>
             </div>
             <Image
               src="/assets/icons/line.png"
@@ -43,7 +50,9 @@ export default function Hero() {
             />
             <div>
               <span className="font-bold text-xl tablet:text-4xl">2,000 +</span>
-              <p className="text-neutral-700 text-sm tablet:text-lg">High-Quality Products</p>
+              <p className="text-neutral-700 text-sm tablet:text-lg">
+                High-Quality Products
+              </p>
             </div>
           </div>
 
@@ -56,16 +65,19 @@ export default function Hero() {
               className="hidden tablet:block"
             />
             <div>
-              <span className="font-bold text-xl tablet:text-4xl">50,000 +</span>
-              <p className="text-neutral-700 text-sm tablet:text-lg"> Happy Customers </p>
+              <span className="font-bold text-xl tablet:text-4xl">
+                50,000 +
+              </span>
+              <p className="text-neutral-700 text-sm tablet:text-lg">
+                {" "}
+                Happy Customers{" "}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-hero-mobile bg-no-repeat bg-cover min-h-[440px]">
-        
-      </div>
+      <div className="bg-hero-mobile bg-no-repeat bg-cover min-h-[440px]"></div>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useShoppingCart } from "@/Hooks/useShoppingCart";
 
 export default function Header() {
+
   const { count } = useShoppingCart();
 
   return (
@@ -26,10 +27,11 @@ export default function Header() {
       {/* MENU */}
       <nav className="hidden desktop:flex flex-wrap justify-center items-center">
         <ul className="desktop:text-lg gap-7 flex justify-center items-center">
-          <li>
-            <a href="#shop" className="no-underline">
-              Shop
-            </a>
+          <li className="hover:font-semibold">
+            <Link href={"/products"} className="no-underline">
+                Shop 
+            </Link>
+        
           </li>
           <li>
             <a href="#onsale" className="no-underline">
@@ -54,7 +56,9 @@ export default function Header() {
         <FaSearch className="text-gray-600 cursor-pointer text-xl" />
         <input
           className="border-none outline-none  bg-baseBg w-full"
+          // value={"hola"}
           type="text"
+          // onChange={""}
           placeholder="Search for products..."
         />
       </div>
