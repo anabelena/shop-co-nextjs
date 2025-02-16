@@ -15,9 +15,9 @@ export default function RootLayout({
     <html lang="en" className={`${satoshi.variable} ${oswald.variable}`}>
       <body className="font-body">
         <ShoppingCartProvider>
-        <Banner />
-          <main className="max-w-[1240px] mx-auto ">
-            <Header />
+          <Banner />
+          <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+            <Header/>
             {children}
             <Newsletter/>
             <Footer/>

@@ -1,6 +1,7 @@
 "use client";
 
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
+
 import Link from "next/link";
 
 import { useShoppingCart } from "@/Hooks/useShoppingCart";
@@ -28,6 +29,7 @@ export default function Header() {
       <nav className="hidden desktop:flex flex-wrap justify-center items-center">
         <ul className="desktop:text-lg gap-7 flex justify-center items-center">
           <li className="hover:font-semibold">
+
             <Link href={"/products"} className="no-underline">
                 Shop 
             </Link>
