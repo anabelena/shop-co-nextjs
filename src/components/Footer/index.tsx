@@ -9,7 +9,7 @@ import Newsletter from "../Newsletter";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex justify-around items-center bg-baseBg py-10">
+    <footer className="mx-auto max-w-[1440px] flex justify-around items-center bg-baseBg py-10">
 
      {/* <Newsletter/> */}
 
