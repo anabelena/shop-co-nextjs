@@ -1,9 +1,7 @@
 "use client";
 
 import { FaBars, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
-
 import Link from "next/link";
-
 import { useShoppingCart } from "@/Hooks/useShoppingCart";
 
 export default function Header() {
@@ -11,41 +9,39 @@ export default function Header() {
   const { count } = useShoppingCart();
 
   return (
-    <header className="flex items-center justify-between my-3 w-full mx-auto tablet:my-5 tablet:max-w-[768px] laptop:max-w-[1024px] desktop:max-w-[1240px] ">
-      {/* LOGO */}
 
-      <div className="flex gap-4 tablet:gap-6 laptop:gap-7 items-center">
+    <header className="mx-auto max-w-[1440px] flex items-center justify-between pb-2 pt-4  px-5 tablet:px-[110px] ">
+     
+      {/* LOGO and MOBILE MENU */}
+      <div className="flex gap-4 tablet:gap-6 laptop:gap-7 items-center  ">
         <FaBars className="text-lg block desktop:hidden cursor-pointer" />
         <Link
           href={"/"}
           className="text-xl tablet:text-2xl laptop:text-3xl font-bold font-heading cursor-pointer"
-        >
-          {" "}
-          SHOP.CO{" "}
-        </Link>
+        > SHOP.CO</Link>
       </div>
 
-      {/* MENU */}
-      <nav className="hidden desktop:flex flex-wrap justify-center items-center">
-        <ul className="desktop:text-lg gap-7 flex justify-center items-center">
-          <li className="hover:font-semibold">
+      {/* NAVIGATION MENU */}
+      <nav className="hidden desktop:flex  ">
+        
+        <ul className="desktop:text-lg gap-5 flex items-center ">
 
+          <li className="hover:font-semibold">
             <Link href={"/products"} className="no-underline">
                 Shop 
             </Link>
-        
           </li>
-          <li>
+          <li className="hover:font-semibold">
             <a href="#onsale" className="no-underline">
               On Sale
             </a>
           </li>
-          <li>
+          <li className="hover:font-semibold">
             <a href="#newarrivals" className="no-underline">
               New Arrivals
             </a>
           </li>
-          <li>
+          <li className="hover:font-semibold">
             <a href="#brands" className="no-underline">
               Brands
             </a>
@@ -53,7 +49,7 @@ export default function Header() {
         </ul>
       </nav>
 
-      {/* SEARCH PRODUCTS */}
+      {/* PRODUCT FILTER */}
       <div className="hidden tablet:flex items-center bg-baseBg gap-4 px-5 py-3 rounded-[62px] tablet:w-[400px] laptop:w-[480px] desktop:w-[520px]">
         <FaSearch className="text-gray-600 cursor-pointer text-xl" />
         <input
@@ -65,8 +61,8 @@ export default function Header() {
         />
       </div>
 
-      {/* ICONOS */}
-      <div className="flex justify-center items-center gap-3 tablet:gap-5 ">
+      {/* SEARCH , CART , USER */}
+      <div className="flex justify-center items-center gap-4 tablet:gap-6 ">
         <FaSearch className="block tablet:hidden cursor-pointer" />
         <Link href={count > 0 ? "/cart" : "#"}>
           <div className="relative">
@@ -78,9 +74,9 @@ export default function Header() {
             )}
           </div>
         </Link>
-
         <FaUser className="text-lg tablet:text-xl cursor-pointer" />
       </div>
+
     </header>
   );
 }

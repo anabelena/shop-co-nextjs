@@ -16,8 +16,8 @@ export default function RootLayout({
       <body className="font-body">
         <ShoppingCartProvider>
           <Banner />
+          <Header/>
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-            <Header/>
             {children}
             <Newsletter/>
             <Footer/>
