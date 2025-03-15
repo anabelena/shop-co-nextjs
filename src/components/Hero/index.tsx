@@ -1,5 +1,4 @@
 import Button from "../Button";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -41,13 +40,7 @@ export default function Hero() {
                 International Brands
               </p>
             </div>
-            <Image
-              src="/assets/icons/line.png"
-              width={1}
-              height={1}
-              alt="linea"
-              className=""
-            />
+
             <div>
               <span className="font-bold text-xl tablet:text-4xl">2,000 +</span>
               <p className="text-neutral-700 text-sm tablet:text-lg">
@@ -57,20 +50,12 @@ export default function Hero() {
           </div>
 
           <div className="flex gap-5">
-            <Image
-              src="/assets/icons/line.png"
-              alt="linea"
-              width={1}
-              height={1}
-              className="hidden tablet:block"
-            />
             <div>
               <span className="font-bold text-xl tablet:text-4xl">
                 50,000 +
               </span>
               <p className="text-neutral-700 text-sm tablet:text-lg">
-                {" "}
-                Happy Customers{" "}
+                Happy Customers
               </p>
             </div>
           </div>

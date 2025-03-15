@@ -12,26 +12,33 @@ interface ProductCardProps extends IProduct {
 export default function ProductCard({
   id,
   title,
-  price,
   description,
-  image,
+  category,
+  price,
+  discountPercentage,
   rating,
+  brand,
+  sku,
+  warrantyInformation,
+  shippingInformation,
+  thumbnail,
+  tags,
+  reviews,
   showImage = true,
   showDescription = false,
   titleSize = "md",
 }: ProductCardProps) {
-  const Discount: number = 20;
-  const priceDiscount: number = price - price * (Discount / 100);
+  let newPrice = 0;
+  if (discountPercentage) {
+    newPrice = price - price * (discountPercentage / 100);
+  }
 
   let titleClass = "text-[20px]";
-
-  let titleSlice = 15;
 
   if (titleSize === "sm") {
     titleClass = "text-[24px]"; // Tamaño pequeño
   } else if (titleSize === "lg") {
     titleClass = "text-[40px] "; // Tamaño grande
-    titleSlice = 25;
   }
 
   return (
@@ -41,8 +48,8 @@ export default function ProductCard({
           <Link href={`/products/${id}`} key={id}>
             <Image
               className="w-[150px] h-[200px] hover:shadow-xl mx-auto tablet:w-[200px] tablet:h-[200px]"
-              src={image}
-              alt={title.slice(0, 11)} //10 characters
+              src={thumbnail}
+              alt={title}
               width={295}
               height={298}
               style={{ objectFit: "contain" }}
@@ -55,24 +62,34 @@ export default function ProductCard({
       <div className="grid grid-cols-1 gap-2">
         {/* Product Title */}
         <h3 className={`font-bold ${titleClass}`}>
-          <Link href={`products/${id}`}> {title.slice(0, titleSlice)} </Link>
+          <Link href={`products/${id}`}> {title} </Link>
         </h3>
+        <h2 className="font-bold"> {brand} </h2>
+        <h2 className="font-bold"> {category} </h2>
+        <h2 className="font-bold"> {sku}</h2>
         {/* Product Rating */}
         <div className="flex items-center gap-1">
-          <RatingStars rating={rating?.rate} />
+          <RatingStars rating={rating} />
           <p className="text-xs tablet:text-sm">
-            {rating?.rate} <span className="text-neutral-500">/5</span>
+            {rating} <span className="text-neutral-500">/5</span>
           </p>
+        </div>
+
+        <div>
+          <span> </span>
         </div>
 
         {/* Product Price */}
         <div className="flex items-center gap-4 text-sm tablet:text-lg">
           <span className="font-bold ">{`$${price}`}</span>
-          <span className="font-bold  line-through text-neutral-600">
-            {`$${priceDiscount}`}
-          </span>
+          {newPrice && (
+            <span className="font-bold  line-through text-neutral-600">
+              {`$${newPrice}`}
+            </span>
+          )}
+
           <div className="text-red-400 font-semibold text-center rounded-lg px-3 bg-red-200">
-            {` ${Discount} %`}
+            {` ${discountPercentage} %`}
           </div>
         </div>
         {/* Product Description */}
