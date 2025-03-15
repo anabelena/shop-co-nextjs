@@ -19,6 +19,14 @@ export const getLimitProducts = async () => {
   return response.data.products;
 };
 
+export const getProductsById = async (id: string) => {
+  if (!apiURL) {
+    throw new Error("apiUrl is not defined");
+  }
+  const response = await axios.get(`${apiURL}/${id}`);
+  console.log("product by id", response.data.products);
+};
+
 // export async function getProducts() {
 //   if (!process.env.NEXT_PUBLIC_PRODUCTS) {
 //     throw new Error("NEXT_PUBLIC_PRODUCTS is not defined");

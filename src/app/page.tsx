@@ -10,7 +10,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getLimitProducts } from "@/utils";
 
 export default function Home() {
-
   const { data, isLoading, error } = useQuery({
     queryKey: ["products"],
     queryFn: getLimitProducts,
@@ -86,13 +85,7 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-2 gap-5 p-2 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
           {data.slice(0, 4).map((item: IProduct) => (
-            <ProductCard
-              key={item.id}
-              {...item}
-              showImage={true}
-              showDescription={false}
-              titleSize="md"
-            />
+            <ProductCard key={item.id} {...item} />
           ))}
         </div>
       </section>
@@ -103,7 +96,7 @@ export default function Home() {
           TOP SELLING
         </h2>
         <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
-          {data.slice(4,8).map((item: IProduct) => (
+          {data.slice(4, 8).map((item: IProduct) => (
             <ProductCard
               key={item.id}
               {...item}
