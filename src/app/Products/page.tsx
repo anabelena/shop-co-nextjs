@@ -1,9 +1,7 @@
 "use client"; // Client-side component
 
 import { useState, useEffect } from "react";
-// Import the fetch function
 import { IProduct } from "@/types/product"; // Import the existing IProduct interface
-import { getProductsByLimit } from "@/utils";
 import ProductCard from "@/components/ProductCard";
 import { FaSearch } from "react-icons/fa";
 import Button from "@/components/Button";

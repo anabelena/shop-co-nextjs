@@ -1,76 +1,81 @@
-import ProductCard from "@/components/ProductCard";
 import Thumbnail from "@/components/Thumbnail";
 import ProductSelector from "@/components/ProductSelector";
 import ProductReview from "@/components/ProductReview";
-import { reviews } from "@/data/reviews";
-import { getProductById, getThumbnailImage } from "@/utils";
+import { getProductsById } from "@/utils";
 import ProductCTA from "@/components/ProductFilter";
+import { IReview } from "@/types/review";
 
 type Params = Promise<{ id: string }>;
 
 export default async function ProductPage({ params }: { params: Params }) {
-  
   const { id } = await params;
-  
-  const product = await getProductById(id);
 
-  const images = await getThumbnailImage();
+  const product = await getProductsById(id);
 
-  const imagesArray = [product.image,...images]
-  
+  const price = product.price;
+  const discount = product.discountPercentage;
+  const hasDiscount = product.discountPercentage > 0;
+  const newPrice = price - price * (discount / 100);
+
   return (
     <section className="product-page">
 
-      <hr  className="my-5"/>
+      <hr className="my-5" />
 
-      <section className="flex justify-around gap-8 mt-5">
+      <section className="grid grid-cols-1 gap-12 sm:flex justify-center  ">
+
+     
+        <Thumbnail images={product.images} />
+
+      
+        <div className="grid grid-cols-1 w-full sm:max-w-[450px]">
+          <h2 className="text-5xl font-bold "> {product.title} </h2>
+          <h3 className="text-2xl"> {product.brand} </h3>
+          <p className="text-pretty"> {product.description}</p>
+          <div className="text-xl flex gap-5">
+            <span>{newPrice.toFixed(2)}</span>
+            {hasDiscount && (
+              <span className="line-through text-neutral-400 "> {price} </span>
+            )}
+            <span className="text-red-600">{`- ${discount}%`}</span>
+          </div>
+          <h3 className="text-sm text-neutral-400">{`SKU: ${product.sku}`}</h3>
+
+          <div>
+            <h4> Dimensions </h4>
+            <div>
+              <ul className="list-disc pl-7">
+                <li>{`Width: ${product.dimensions.width}`}</li>
+                <li>{`Height: ${product.dimensions.height}`}</li>
+                <li>{`Depth: ${product.dimensions.depth}`}</li>
+              </ul>
+            </div>
+          </div>
         
-        <Thumbnail images={imagesArray} />
-
-        <div className="tablet:max-w-[500px] laptop:max-w-[600px]">
-          
-          <ProductCard
-            id={product.id}
-            title={product.title}
-            description={product.description}
-            image={product.image}
-            price={product.price}
-            rating={product.rating}
-            showImage={false}
-            showDescription={true}
-            titleSize="lg"
-          />
-
-          <ProductSelector
-            id={product.id}
-            title={product.title}
-            price={product.price}
-            image={product.image}
-          />
-
         </div>
       </section>
 
-      <hr className="my-5 tablet:my-8 "/>
+      <hr className="my-5 tablet:my-8 " />
 
       <section className="mb-8">
         <div className="flex justify-around items-center">
-        <h3 className="font-bold  text-lg"> All Reviews <span className="text-gray-500"> (410) </span> </h3>
-        <ProductCTA/>
+          <h3 className="font-bold text-lg">
+            All Reviews{" "}
+            <span className="text-gray-400">
+              {" "}
+              {`( ${product.reviews.length} )`}{" "}
+            </span>
+          </h3>
+          <ProductCTA />
         </div>
-       
+
         <div className="grid grid-cols-1 laptop:grid-cols-2 gap-y-2 my-3 justify-items-center">
-          {reviews.map((item, index) => (
+          {product.reviews.map((item: IReview) => (
             <div
-              key={index}
+              key={item.reviewerEmail}
               className="w-80 laptop:w-[610px] border border-baseBg rounded-xl py-5 px-7"
             >
-              <ProductReview
-                name={item.name}
-                review={item.review}
-                date={item.date}
-                star={item.star}
-              />
+              <ProductReview {...item} />
             </div>
           ))}
         </div>

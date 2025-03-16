@@ -24,7 +24,8 @@ export const getProductsById = async (id: string) => {
     throw new Error("apiUrl is not defined");
   }
   const response = await axios.get(`${apiURL}/${id}`);
-  console.log("product by id", response.data.products);
+  console.log("product by id", response.data);
+  return response.data
 };
 
 // export async function getProducts() {
