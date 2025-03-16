@@ -1,14 +1,35 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 
-import { getProductsCategory } from "@/utils";
+// import { getProductsCategory } from "@/utils";
 import { IProduct } from "@/types/product";
+import { useQuery } from "@tanstack/react-query";
+import { getLimitProducts } from "@/utils";
 
-export default async function Home() {
-  
-  const newArrivals = await getProductsCategory();
+export default function Home() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: getLimitProducts,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span>Loading...</span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span>Error fetching products</span>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -35,7 +56,7 @@ export default async function Home() {
           <Image
             src="/assets/images/gucci.svg"
             width={156}
-            height={36}
+            height={32}
             alt="gucci"
           />
         </div>
@@ -63,28 +84,11 @@ export default async function Home() {
           NEW ARRIVALS
         </h2>
         <div className="grid grid-cols-2 gap-5 p-2 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
-          {newArrivals.slice(0, 4).map((item: IProduct) => (
-            <ProductCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              description={item.description}
-              image={item.image}
-              rating={item.rating}
-            />
+          {data.slice(0, 4).map((item: IProduct) => (
+            <ProductCard key={item.id} {...item} />
           ))}
         </div>
       </section>
-
-      <div className="my-10 flex justify-center items-center">
-        <Image
-          src={"assets/images/line.svg"}
-          alt="line"
-          width={1240}
-          height={1}
-        ></Image>
-      </div>
 
       {/* TOP SELLING */}
       <section className="grid grid-cols-1 gap-8 ">
@@ -92,22 +96,20 @@ export default async function Home() {
           TOP SELLING
         </h2>
         <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
-          {newArrivals.slice(0, 4).map((item: IProduct) => (
+          {data.slice(4, 8).map((item: IProduct) => (
             <ProductCard
               key={item.id}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              description={item.description}
-              image={item.image}
-              rating={item.rating}
+              {...item}
+              showImage={true}
+              showDescription={false}
+              titleSize="md"
             />
           ))}
         </div>
       </section>
 
       {/* BROWSE BY DRESS STYLE */}
-      <section className="bg-stone-200 border-1 rounded-3xl py-5">
+      {/* <section className="bg-stone-200 border-1 rounded-3xl py-5">
 
         <h2 className="font-heading font-bold text-3xl text-center tablet:text-4xl laptop:text-5xl my-8">
           BROWSE BY DRESS STYLE
@@ -156,7 +158,7 @@ export default async function Home() {
             <p className="absolute top-6 left-9 font-bold text-4xl"> Gym </p>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

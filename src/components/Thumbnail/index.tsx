@@ -7,36 +7,37 @@ export default function Thumbnail({ images }: { images: string[] }) {
   
   const [mainImage, setMainImage] = useState(images[0]);
 
-  return (
-    <div className="flex gap-8">
+  const displayedImages =
+    images.length === 1 ? [images[0], images[0], images[0]] : images;
 
-      <div className="grid grid-cols-1 gap-3">
-        {images.slice(1).map((imageUrl, index) => (
+  return (
+    <div className="flex flex-col-reverse md:flex-row gap-5">
+      {/* Miniatures */}
+      <div className="grid grid-cols-3 md:grid-cols-1 gap-3">
+        {displayedImages.map((imageUrl, index) => (
           <div
+            className="border-2 border-neutral-200 rounded-lg flex items-center"
             key={index}
-            className=" tablet:w-[152px] border-2 border-neutral-200 rounded-lg px-5"
           >
             <Image
-              className="w-[112px] h-[106px] laptop:w-[152px] laptop:h-[168px] cursor-pointer"
-              key={index}
               alt="Image"
               src={imageUrl}
-              width={100}
-              height={100}
-              style={{ objectFit: "contain" }}
+              width={150}
+              height={150}
               onClick={() => setMainImage(imageUrl)}
+              className="cursor-pointer"
             />
           </div>
         ))}
       </div>
 
-      <div className="border-2 border-neutral-200 rounded-lg px-5">
+      {/* Main */}
+      <div className="border-2 border-neutral-200 rounded-lg w-full sm:max-w-[450px] flex items-center ">
         <Image
-          className="w-[444px] h-[530px] cursor-pointer "
-          width={444}
-          height={530}
+          className="cursor-pointer object-cover"
+          width={450}
+          height={450}
           src={mainImage}
-          style={{ objectFit: "contain" }}
           alt="Main"
         />
       </div>

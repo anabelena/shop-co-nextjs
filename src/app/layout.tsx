@@ -3,8 +3,8 @@ import { satoshi, oswald } from "./fonts/fonts";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import Footer from "@/components/Footer";
-import { ShoppingCartProvider } from "@/context/cartContext";
 import Newsletter from "@/components/Newsletter";
+import { Providers } from "./providers";
 
 export default function RootLayout({
   children,
@@ -14,15 +14,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${satoshi.variable} ${oswald.variable}`}>
       <body className="font-body">
-        <ShoppingCartProvider>
+        <Providers>
           <Banner />
-          <Header/>
-          <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+          <Header />
+          <main className="mx-auto max-w-[1440px]">
             {children}
-            <Newsletter/>
-            <Footer/>
-          </main>
-        </ShoppingCartProvider>
+            </main>
+          <Newsletter />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
