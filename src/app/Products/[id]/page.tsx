@@ -9,9 +9,7 @@ type Params = Promise<{ id: string }>;
 
 export default async function ProductPage({ params }: { params: Params }) {
   const { id } = await params;
-
   const product = await getProductsById(id);
-
   const price = product.price;
   const discount = product.discountPercentage;
   const hasDiscount = product.discountPercentage > 0;
@@ -19,43 +17,47 @@ export default async function ProductPage({ params }: { params: Params }) {
 
   return (
     <section className="product-page">
-
       <hr className="my-5" />
 
       <section className="grid grid-cols-1 gap-12 sm:flex justify-center  ">
-
-     
         <Thumbnail images={product.images} />
 
-      
-        <div className="grid grid-cols-1 w-full sm:max-w-[450px]">
-          <h2 className="text-5xl font-bold "> {product.title} </h2>
-          <h3 className="text-2xl"> {product.brand} </h3>
-          <p className="text-pretty"> {product.description}</p>
-          <div className="text-xl flex gap-5">
-            <span>{newPrice.toFixed(2)}</span>
-            {hasDiscount && (
-              <span className="line-through text-neutral-400 "> {price} </span>
-            )}
-            <span className="text-red-600">{`- ${discount}%`}</span>
+        <div className="w-full sm:max-w-[450px]">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-5xl font-bold "> {product.title} </h2>
+            <h3 className="text-2xl flex gap-7 items-baseline ">
+              {product.brand}
+              <span className="text-xl text-neutral-400">
+                {`SKU: ${product.sku}`}
+              </span>
+            </h3>
+            <p className="text-balance text-lg"> {product.description}</p>
+            <div className="text-xl sm:text-3xl font-bold flex gap-7 ">
+              <span>{`$${newPrice.toFixed(2)}`}</span>
+              {hasDiscount && (
+                <span className="line-through text-neutral-400 ">
+                  {" "}
+                  {`$${price}`}{" "}
+                </span>
+              )}
+              <span className="text-red-600 text-2xl border rounded-xl px-2 bg-red-200">{`-${discount}%`}</span>
+            </div>
           </div>
-          <h3 className="text-sm text-neutral-400">{`SKU: ${product.sku}`}</h3>
-
-          <div>
-            <h4> Dimensions </h4>
+          <hr className="my-4" />
+          <div className="flex flex-col gap-4">
+            <h4 className="text-xl"> Dimensions </h4>
             <div>
-              <ul className="list-disc pl-7">
+              <ul className="list-disc pl-7  flex flex-col gap-2 ">
                 <li>{`Width: ${product.dimensions.width}`}</li>
                 <li>{`Height: ${product.dimensions.height}`}</li>
                 <li>{`Depth: ${product.dimensions.depth}`}</li>
               </ul>
             </div>
           </div>
-        
         </div>
       </section>
 
-      <hr className="my-5 tablet:my-8 " />
+      <hr className="my-5 md:my-8 " />
 
       <section className="mb-8">
         <div className="flex justify-around items-center">
@@ -69,11 +71,11 @@ export default async function ProductPage({ params }: { params: Params }) {
           <ProductCTA />
         </div>
 
-        <div className="grid grid-cols-1 laptop:grid-cols-2 gap-y-2 my-3 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-2 my-3 justify-items-center">
           {product.reviews.map((item: IReview) => (
             <div
               key={item.reviewerEmail}
-              className="w-80 laptop:w-[610px] border border-baseBg rounded-xl py-5 px-7"
+              className="w-80 lg:w-[610px] border border-baseBg rounded-xl py-5 px-7"
             >
               <ProductReview {...item} />
             </div>

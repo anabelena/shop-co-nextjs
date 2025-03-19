@@ -36,7 +36,7 @@ export default function Home() {
       <Hero />
       {/* LOGOS SECTION */}
       <section className="bg-neutral-800 flex flex-wrap items-center py-5 justify-around gap-5 ">
-        <div className="w-[110px] tablet:w-[150px]">
+        <div className="w-[110px] md:w-[150px]">
           <Image
             src="/assets/images/versace.svg"
             width={166}
@@ -44,7 +44,7 @@ export default function Home() {
             alt="versace"
           />
         </div>
-        <div className="w-[80px] tablet:w-[90px]">
+        <div className="w-[80px] md:w-[90px]">
           <Image
             src="/assets/images/zara.svg"
             width={90}
@@ -52,7 +52,7 @@ export default function Home() {
             alt="zara"
           />
         </div>
-        <div className=" w-[110px] tablet:w-[150px]">
+        <div className=" w-[110px] md:w-[150px]">
           <Image
             src="/assets/images/gucci.svg"
             width={156}
@@ -60,7 +60,7 @@ export default function Home() {
             alt="gucci"
           />
         </div>
-        <div className="w-[110px] tablet:w-[150px]">
+        <div className="w-[110px] md:w-[150px]">
           <Image
             src="/assets/images/prada.svg"
             width={194}
@@ -68,7 +68,7 @@ export default function Home() {
             alt="prada"
           />
         </div>
-        <div className="w-[110px] tablet:w-[150px]">
+        <div className="w-[110px] md:w-[150px]">
           <Image
             src="/assets/images/calvin.svg"
             width={200}
@@ -80,10 +80,10 @@ export default function Home() {
 
       {/* NEW ARRIVALS */}
       <section className="grid grid-cols-1 gap-8 ">
-        <h2 className="font-heading font-bold text-3xl  text-center my-5 tablet:text-4xl laptop:text-5xl tablet:my-10">
+        <h2 className="font-heading font-bold text-3xl  text-center my-5 md:text-4xl lg:text-5xl md:my-10">
           NEW ARRIVALS
         </h2>
-        <div className="grid grid-cols-2 gap-5 p-2 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
+        <div className="grid grid-cols-2 gap-5 p-2 md:grid-cols-3 lg:grid-cols-4 md:gap-10 md:p-4">
           {data.slice(0, 4).map((item: IProduct) => (
             <ProductCard key={item.id} {...item} />
           ))}
@@ -92,10 +92,10 @@ export default function Home() {
 
       {/* TOP SELLING */}
       <section className="grid grid-cols-1 gap-8 ">
-        <h2 className="font-heading font-bold text-3xl  text-center tablet:text-4xl laptop:text-5xl tablet:my-10">
+        <h2 className="font-heading font-bold text-3xl  text-center md:text-4xl lg:text-5xl md:my-10">
           TOP SELLING
         </h2>
-        <div className="grid grid-cols-2 gap-5 p-1 tablet:grid-cols-3 laptop:grid-cols-4 tablet:gap-10 tablet:p-4">
+        <div className="grid grid-cols-2 gap-5 p-1 md:grid-cols-3 lg:grid-cols-4 md:gap-10 md:p-4">
           {data.slice(4, 8).map((item: IProduct) => (
             <ProductCard
               key={item.id}
@@ -111,12 +111,12 @@ export default function Home() {
       {/* BROWSE BY DRESS STYLE */}
       {/* <section className="bg-stone-200 border-1 rounded-3xl py-5">
 
-        <h2 className="font-heading font-bold text-3xl text-center tablet:text-4xl laptop:text-5xl my-8">
+        <h2 className="font-heading font-bold text-3xl text-center md:text-4xl lg:text-5xl my-8">
           BROWSE BY DRESS STYLE
         </h2>
 
-        <div className="grid grid-cols-1 justify-items-center tablet:flex tablet:justify-center tablet:items-center gap-5 mb-5">
-          <div className="relative w-full h-28 tablet:w-[407px] tablet:h-[289px]">
+        <div className="grid grid-cols-1 justify-items-center md:flex md:justify-center md:items-center gap-5 mb-5">
+          <div className="relative w-full h-28 md:w-[407px] md:h-[289px]">
             <Image
               className="rounded-md object-cover"
               src="/assets/images/casual-style.png"
@@ -126,7 +126,7 @@ export default function Home() {
             <p className="absolute top-6 left-9 font-bold text-4xl"> Casual </p>
           </div>
 
-          <div className="relative w-full h-28 tablet:w-[684px] tablet:h-[289px]">
+          <div className="relative w-full h-28 md:w-[684px] md:h-[289px]">
             <Image
               className="rounded-md object-cover"
               src="/assets/images/formal-style.png"
@@ -137,8 +137,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 justify-items-center tablet:flex tablet:justify-center tablet:items-center gap-6 mb-5">
-          <div className="relative w-full h-28 tablet:w-[684px] tablet:h-[289px]">
+        <div className="grid grid-cols-1 justify-items-center md:flex md:justify-center md:items-center gap-6 mb-5">
+          <div className="relative w-full h-28 md:w-[684px] md:h-[289px]">
             <Image
               className="rounded-md object-cover"
               src="/assets/images/party-style.png"
@@ -148,7 +148,7 @@ export default function Home() {
             <p className="absolute top-6 left-9 font-bold text-4xl"> Party </p>
           </div>
 
-          <div className="relative w-full h-28 tablet:w-[407px] tablet:h-[289px]">
+          <div className="relative w-full h-28 md:w-[407px] md:h-[289px]">
             <Image
               className="rounded-md object-cover"
               src="/assets/images/gym-style.png"
