@@ -9,11 +9,11 @@ import Newsletter from "../Newsletter";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto max-w-[1440px] flex justify-around items-center bg-baseBg py-10">
+    <footer className="mx-auto max-w-[1440px] flex justify-around items-center bg-base py-10">
       {/* <Newsletter/> */}
 
       <div className="grid grid-cols-1 gap-5 md:w-[230px]">
-        <p className="text-xl md:text-3xl font-bold font-heading ">SHOP.CO</p>
+        <p className="text-xl md:text-3xl font-bold font-heading ">TRENDIFY</p>
         <p className="text-sm text-neutral-600">
           We have clothes that suits your style and which you’re proud to wear.
           From women to men.

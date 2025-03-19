@@ -16,8 +16,7 @@ export default function Header() {
           href={"/"}
           className="text-xl md:text-2xl lg:text-3xl font-bold font-heading cursor-pointer"
         >
-          {" "}
-          SHOP.CO
+          TRENDIFY
         </Link>
       </div>
 
@@ -48,10 +47,10 @@ export default function Header() {
       </nav>
 
       {/* PRODUCT FILTER */}
-      <div className="hidden md:flex items-center bg-baseBg gap-4 px-5 py-3 rounded-[62px] md:w-[400px] lg:w-[480px] xl:w-[520px]">
+      <div className="hidden md:flex items-center bg-base gap-4 px-5 py-3 rounded-[62px] md:w-[400px] lg:w-[480px] xl:w-[520px]">
         <FaSearch className="text-gray-600 cursor-pointer text-xl" />
         <input
-          className="border-none outline-none  bg-baseBg w-full"
+          className="border-none outline-none  bg-base w-full"
           // value={"hola"}
           type="text"
           // onChange={""}

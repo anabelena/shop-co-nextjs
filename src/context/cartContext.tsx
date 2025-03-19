@@ -1,25 +1,14 @@
 "use client";
-
 import { createContext, useState, ReactNode, Dispatch } from "react";
-
 import { SetStateAction } from "react";
-
-interface CartItem {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  color: string | null;
-  size: string | null;
-  quantity: number;
-}
+import { ICartItem } from "@/types/cart";
 
 interface ShoppingCartContextType {
   count: number;
   setCount: Dispatch<SetStateAction<number>>;
-  cartProducts: CartItem[]; //array of objects
-  setCartProducts: Dispatch<SetStateAction<CartItem[]>>;
-  addToCart: (item: CartItem) => void;
+  cartProducts: ICartItem[]; //array of objects
+  setCartProducts: Dispatch<SetStateAction<ICartItem[]>>;
+  addToCart: (item: ICartItem) => void;
   updateQuantity: (id: number, quantity: number) => void;
   removeFromCart: (id: number) => void;
 }
@@ -29,10 +18,9 @@ export const ShoppingCartContext =
 
 export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   const [count, setCount] = useState<number>(0);
+  const [cartProducts, setCartProducts] = useState<ICartItem[]>([]);
 
-  const [cartProducts, setCartProducts] = useState<CartItem[]>([]);
-
-  const addToCart = (item: CartItem) => {
+  const addToCart = (item: ICartItem) => {
     setCartProducts((prev) => {
       const exists = prev.some((product) => product.id === item.id);
 
@@ -63,24 +51,19 @@ export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
         0
       );
       setCount(newCount); // Update count
-
       return updatedCart;
     });
   };
 
   const removeFromCart = (id: number) => {
-    
     setCartProducts((prev) => {
-
       const updatedCart = prev.filter((product) => product.id !== id); // Remove the product
-
       // Recalculate the count based on the remaining products
       const newCount = updatedCart.reduce(
         (sum, product) => sum + product.quantity,
         0
       );
       setCount(newCount); // Update the count
-
       return updatedCart; // Return the updated cart
     });
   };

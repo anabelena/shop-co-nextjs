@@ -1,8 +1,6 @@
 import { ShoppingCartContext } from "@/context/cartContext";
 import { useContext } from "react";
 
-// Hook personalizado para evitar valores `undefined`
-
 export function useShoppingCart() {
     const context = useContext(ShoppingCartContext);
     if (!context) {
