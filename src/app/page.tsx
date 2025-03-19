@@ -7,13 +7,22 @@ import ProductCard from "@/components/ProductCard";
 // import { getProductsCategory } from "@/utils";
 import { IProduct } from "@/types/product";
 import { useQuery } from "@tanstack/react-query";
-import { getLimitProducts } from "@/utils";
+import { getLimitProducts,getNewArrivals } from "@/utils";
 
 export default function Home() {
-  const { data, isLoading, error } = useQuery({
+
+  const { data:products, isLoading:loadingProducts, error:errorProducts } = useQuery({
     queryKey: ["products"],
     queryFn: getLimitProducts,
   });
+  
+  const { data: newArrivals, isLoading: loadingNewArrivals, error: errorNewArrivals } = useQuery({
+    queryKey: ["new"],
+    queryFn: getNewArrivals,
+  });
+  
+  const isLoading = loadingProducts || loadingNewArrivals;
+  const error = errorProducts || errorNewArrivals;
 
   if (isLoading) {
     return (
@@ -79,30 +88,27 @@ export default function Home() {
       </section>
 
       {/* NEW ARRIVALS */}
-      <section className="grid grid-cols-1 gap-8 ">
-        <h2 className="font-heading font-bold text-3xl  text-center my-5 md:text-4xl lg:text-5xl md:my-10">
+      <section className="">
+        <h2 className="font-heading font-bold text-3xl text-center md:text-5xl my-10">
           NEW ARRIVALS
         </h2>
         <div className="grid grid-cols-2 gap-5 p-2 md:grid-cols-3 lg:grid-cols-4 md:gap-10 md:p-4">
-          {data.slice(0, 4).map((item: IProduct) => (
+          {newArrivals.map((item: IProduct) => (
             <ProductCard key={item.id} {...item} />
           ))}
         </div>
       </section>
 
       {/* TOP SELLING */}
-      <section className="grid grid-cols-1 gap-8 ">
-        <h2 className="font-heading font-bold text-3xl  text-center md:text-4xl lg:text-5xl md:my-10">
+      <section className=" ">
+        <h2 className="font-heading font-bold text-3xl text-center md:text-5xl my-10 ">
           TOP SELLING
         </h2>
         <div className="grid grid-cols-2 gap-5 p-1 md:grid-cols-3 lg:grid-cols-4 md:gap-10 md:p-4">
-          {data.slice(4, 8).map((item: IProduct) => (
+          {products.map((item: IProduct) => (
             <ProductCard
               key={item.id}
               {...item}
-              showImage={true}
-              showDescription={false}
-              titleSize="md"
             />
           ))}
         </div>

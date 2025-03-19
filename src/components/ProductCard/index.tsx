@@ -11,6 +11,10 @@ export default function ProductCard({
   rating,
   thumbnail,
 }: IProduct) {
+
+ const hasDiscount = discountPercentage > 0
+ const newPrice = price - price * (discountPercentage/100)
+
   return (
     <div className="grid grid-cols-1 gap-y-4  md:w-full">
       <div className="rounded-xl border-neutral-200 border-2 cursor-pointer hover:shadow-xl">
@@ -43,10 +47,14 @@ export default function ProductCard({
 
         {/* Product Price */}
         <div className="flex items-center font-bold text-lg md:text-xl gap-4">
-          <span className=" ">{`$${price}`}</span>
-          <span className=" line-through text-neutral-600">{0}</span>
+          <span className=" ">{`$${newPrice.toFixed(2)}`}</span>
+          {hasDiscount && (
+                <span className="line-through text-neutral-400 ">
+                  {`$${price}`}
+                </span>
+              )}
           <div className="text-red-500  text-center rounded-xl px-2 text-sm py-1 font-semibold bg-red-200">
-            {` ${discountPercentage} %`}
+            {`${discountPercentage} %`}
           </div>
         </div>
       </div>

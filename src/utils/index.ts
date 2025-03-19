@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiURL } from "@/config";
+import { apiSkinCareURL, apiURL } from "@/config";
 
 export const getProducts = async () => {
   if (!apiURL) {
@@ -14,10 +14,18 @@ export const getLimitProducts = async () => {
   if (!apiURL) {
     throw new Error("apiUrl is not defined");
   }
-  const response = await axios.get(`${apiURL}?limit=8`);
+  const response = await axios.get(`${apiURL}?limit=4`);
   console.log(response.data.products);
   return response.data.products;
 };
+
+export const getNewArrivals = async () =>{
+  if (!apiSkinCareURL) {
+    throw new Error("apiSkinCareURL is not defined")
+  }
+  const response = await axios.get(`${apiSkinCareURL}?limit=4`);
+  return response.data.products;
+}
 
 export const getProductsById = async (id: string) => {
   if (!apiURL) {

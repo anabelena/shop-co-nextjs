@@ -1,17 +1,17 @@
-import Button from "../Button"
+import Button from "../Button";
 
 interface QuantitySelectorProps {
-  quantity:number;
-  handleIncrement:()=>void;
-  handleDecrement:()=>void;
+  quantity: number;
+  handleIncrement: () => void;
+  handleDecrement: () => void;
 }
-export default function QuantitySelector({quantity,handleIncrement,handleDecrement}:QuantitySelectorProps) {
-  
-
+export default function QuantitySelector({
+  quantity,
+  handleIncrement,
+  handleDecrement,
+}: QuantitySelectorProps) {
   return (
-    
-    <div className="flex justify-center items-center w-[200px] gap-2 bg-baseBg rounded-full px-2 py-2">
-      
+    <div className="flex justify-center items-center w-[150px] gap-2 bg-base rounded-full px-2 py-2">
       <Button
         type="neutral"
         text="-"
@@ -29,7 +29,6 @@ export default function QuantitySelector({quantity,handleIncrement,handleDecreme
         fullHeight={true}
         onClick={handleIncrement}
       />
-      
     </div>
   );
 }

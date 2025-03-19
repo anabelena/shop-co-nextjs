@@ -54,6 +54,13 @@ export default async function ProductPage({ params }: { params: Params }) {
               </ul>
             </div>
           </div>
+
+          <ProductSelector
+            id={product.id}
+            title={product.title}
+            price={product.price}
+            thumbnail={product.thumbnail}
+          />
         </div>
       </section>
 
@@ -62,7 +69,7 @@ export default async function ProductPage({ params }: { params: Params }) {
       <section className="mb-8">
         <div className="flex justify-around items-center">
           <h3 className="font-bold text-lg">
-            All Reviews{" "}
+            All Reviews
             <span className="text-gray-400">
               {" "}
               {`( ${product.reviews.length} )`}{" "}
@@ -75,7 +82,7 @@ export default async function ProductPage({ params }: { params: Params }) {
           {product.reviews.map((item: IReview) => (
             <div
               key={item.reviewerEmail}
-              className="w-80 lg:w-[610px] border border-baseBg rounded-xl py-5 px-7"
+              className="w-80 lg:w-[610px] border border-base rounded-xl py-5 px-7"
             >
               <ProductReview {...item} />
             </div>

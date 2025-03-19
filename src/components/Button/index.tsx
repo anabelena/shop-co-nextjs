@@ -23,7 +23,7 @@ const Button = ({
   const stylesByType = {
     transparent:
       "bg-transparent text-black border border-black hover:bg-black hover:text-white",
-    neutral: "bg-baseBg hover:text-white hover:bg-black",
+    neutral: "bg-base hover:text-white hover:bg-black",
     white:
       "bg-white text-black hover:bg-black hover:text-white border border-white",
     black:
