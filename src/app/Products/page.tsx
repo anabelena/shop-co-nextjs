@@ -68,7 +68,7 @@ export default function ProductList() {
   return (
     <div>
       <div>
-        <div className="hidden tablet:flex items-center bg-baseBg gap-4 px-5 py-3 rounded-[62px] tablet:w-[400px] laptop:w-[480px] desktop:w-[520px]">
+        <div className="hidden md:flex items-center bg-baseBg gap-4 px-5 py-3 rounded-[62px] md:w-[400px] lg:w-[480px] xl:w-[520px]">
           <FaSearch className="text-gray-600 cursor-pointer text-xl" />
           <input
             className="border-none outline-none  bg-baseBg w-full"
@@ -104,11 +104,10 @@ export default function ProductList() {
       {state.hasMore && (
         <div>
           <Button
-          text="Show more "
-          type="neutral"
-          onClick={handleShowMore}
-          >
-          </Button>
+            text="Show more "
+            type="neutral"
+            onClick={handleShowMore}
+          ></Button>
           {/* <button onClick={handleShowMore} disabled={state.loading}>
             {state.loading ? "Loading..." : "Show More"}
           </button> */}

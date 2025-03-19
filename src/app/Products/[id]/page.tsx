@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: { params: Params }) {
         </div>
       </section>
 
-      <hr className="my-5 tablet:my-8 " />
+      <hr className="my-5 md:my-8 " />
 
       <section className="mb-8">
         <div className="flex justify-around items-center">
@@ -71,11 +71,11 @@ export default async function ProductPage({ params }: { params: Params }) {
           <ProductCTA />
         </div>
 
-        <div className="grid grid-cols-1 laptop:grid-cols-2 gap-y-2 my-3 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-2 my-3 justify-items-center">
           {product.reviews.map((item: IReview) => (
             <div
               key={item.reviewerEmail}
-              className="w-80 laptop:w-[610px] border border-baseBg rounded-xl py-5 px-7"
+              className="w-80 lg:w-[610px] border border-baseBg rounded-xl py-5 px-7"
             >
               <ProductReview {...item} />
             </div>

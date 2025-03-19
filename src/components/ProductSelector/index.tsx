@@ -11,13 +11,12 @@ import QuantitySelector from "../QuantitySelector";
 import Button from "../Button";
 
 export default function ProductSelector({ id, title, price, image }: IProduct) {
-  
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  
+
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const [quantity, setQuantity] = useState<number>(1);
-  
+
   const { addToCart } = useShoppingCart();
 
   const handleColor = (color: SetStateAction<string | null>) => {
@@ -29,17 +28,17 @@ export default function ProductSelector({ id, title, price, image }: IProduct) {
   };
 
   const handleIncrement = () => {
-      if (quantity<=9){
-          setQuantity(quantity + 1)
-      }
-  }
+    if (quantity <= 9) {
+      setQuantity(quantity + 1);
+    }
+  };
 
   const handleDecrement = () => {
-     if (quantity > 1){
-        setQuantity(quantity - 1)
-     }
-  }
-  
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   const handleAddToCart = () => {
     const cartItem = {
       id,
@@ -87,7 +86,7 @@ export default function ProductSelector({ id, title, price, image }: IProduct) {
 
       <section className="size">
         <h3 className=" text-md"> Choose Size </h3>
-        <div className="flex gap-1 tablet:gap-4 h-[25px] tablet:h-[35px] my-4">
+        <div className="flex gap-1 md:gap-4 h-[25px] md:h-[35px] my-4">
           {sizeData.map((size) => (
             <div key={size.name}>
               <Button
@@ -110,11 +109,11 @@ export default function ProductSelector({ id, title, price, image }: IProduct) {
       <hr className="my-2" />
 
       <section className="flex gap-7 mt-5">
-        <QuantitySelector 
-        quantity={quantity}
-        handleIncrement={handleIncrement}
-        handleDecrement={handleDecrement}
-         />
+        <QuantitySelector
+          quantity={quantity}
+          handleIncrement={handleIncrement}
+          handleDecrement={handleDecrement}
+        />
         <div className="w-full">
           <Button
             type="neutral"

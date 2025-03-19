@@ -18,7 +18,7 @@ const Button = ({
   children,
 }: ButtonProps) => {
   const baseStyles =
-    "flex items-center justify-center rounded-[60px] px-3 text-sm tablet:text-md cursor-pointer";
+    "flex items-center justify-center rounded-[60px] px-3 text-sm md:text-md cursor-pointer";
 
   const stylesByType = {
     transparent:
@@ -32,7 +32,7 @@ const Button = ({
     rounded: "rounded-full w-full h-full",
   };
 
-  const widthStyles = fullWidth ? "w-full" : "tablet:w-[218px]";
+  const widthStyles = fullWidth ? "w-full" : "md:w-[218px]";
 
   const heightStyles = fullHeight ? "h-full" : "h-[52px]";
 
