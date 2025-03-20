@@ -46,7 +46,7 @@ export default {
       },
       backgroundImage: {
         hero: "url('/assets/images/bg-white.jpg')",
-        "hero-mobile": "url('/assets/images/hero-mobile.svg')",
+        "hero-mobile": "url('/assets/images/bg-white-mobile.png')",
       },
     },
   },

@@ -18,7 +18,7 @@ const Button = ({
   children,
 }: ButtonProps) => {
   const baseStyles =
-    "flex items-center justify-center rounded-[60px] px-3 text-sm md:text-md cursor-pointer";
+    "flex items-center justify-center rounded-[60px] px-3 text-sm sm:text-md cursor-pointer";
 
   const stylesByType = {
     transparent:
