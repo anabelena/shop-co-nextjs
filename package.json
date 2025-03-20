@@ -1,6 +1,7 @@
 {
-  "name": "shop-co-nextjs-app",
+  "name": "next-store-app",
   "version": "0.1.0",
+  "author":"Belen Arista",
   "private": true,
   "scripts": {
     "dev": "next dev",
