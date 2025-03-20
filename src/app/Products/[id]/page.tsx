@@ -4,6 +4,7 @@ import ProductReview from "@/components/ProductReview";
 import { getProductsById } from "@/utils";
 import ProductCTA from "@/components/ProductFilter";
 import { IReview } from "@/types/review";
+import { reviews } from "@/data/reviews";
 
 type Params = Promise<{ id: string }>;
 
@@ -14,6 +15,8 @@ export default async function ProductPage({ params }: { params: Params }) {
   const discount = product.discountPercentage;
   const hasDiscount = product.discountPercentage > 0;
   const newPrice = price - price * (discount / 100);
+ 
+  const newReview = [...product.reviews,...reviews]
 
   return (
     <section className="product-page">
@@ -79,9 +82,9 @@ export default async function ProductPage({ params }: { params: Params }) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-2 my-3 justify-items-center">
-          {product.reviews.map((item: IReview) => (
+          {newReview.map((item: IReview,index:number) => (
             <div
-              key={item.reviewerEmail}
+               key={index}
               className="w-80 lg:w-[610px] border border-base rounded-xl py-5 px-7"
             >
               <ProductReview {...item} />

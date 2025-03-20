@@ -9,6 +9,16 @@ export default function ProductReview({
   date,
   rating,
 }: IReview) {
+
+
+  const newDate = new Date(date);
+
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  }).format(newDate);
+
   return (
     <div className="grid grid-cols-1 gap-y-2">
       <div className="flex gap-x-2 items-center">
@@ -18,7 +28,8 @@ export default function ProductReview({
       <p className="text-xs text-neutral-500">{reviewerEmail}</p>
       <RatingStars rating={rating} />
       <p className="text-lg">{comment}</p>
-      <p className="text-sm text-gray-400">{date.slice(0,10)}</p>
+      <p className=" text-gray-400">{`Posted on ${formattedDate}`}</p>
+      <p className="hidden">{date}</p>
     </div>
   );
 }
